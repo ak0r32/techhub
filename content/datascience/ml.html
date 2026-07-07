@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning - TechLearn Hub</title>
+    <link rel="stylesheet" href="../../css/w3schools-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { padding-top: 103px; }
+        .content-wrapper { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+        .page-header { background: linear-gradient(135deg, #2E86AB, #04AA6D); color: white; padding: 50px; border-radius: 10px; margin-bottom: 40px; }
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 15px; }
+        .page-header p { font-size: 1.2rem; opacity: 0.9; }
+        .content-grid { display: grid; grid-template-columns: 250px 1fr; gap: 30px; }
+        .sidebar-nav { background: white; border: 1px solid #E7E9EB; border-radius: 8px; padding: 20px; height: fit-content; position: sticky; top: 120px; }
+        .sidebar-nav h3 { margin-bottom: 20px; color: #282A35; }
+        .sidebar-nav a { display: block; padding: 10px; color: #000; text-decoration: none; border-radius: 4px; margin-bottom: 5px; transition: 0.3s; }
+        .sidebar-nav a:hover { background: #04AA6D; color: white; }
+        .sidebar-nav a.active { background: #04AA6D; color: white; }
+        .main-content { background: white; border: 1px solid #E7E9EB; border-radius: 8px; padding: 40px; }
+        .section { margin-bottom: 50px; }
+        .section h2 { color: #04AA6D; margin-bottom: 20px; font-size: 2rem; }
+        .section h3 { color: #282A35; margin: 25px 0 15px; }
+        .code-example { background: #F1F1F1; border-left: 4px solid #04AA6D; padding: 20px; margin: 20px 0; border-radius: 4px; overflow-x: auto; }
+        .code-example code { font-family: 'Courier New', monospace; }
+        .note-box { background: #FFF4A3; border-left: 4px solid #FFC107; padding: 20px; margin: 20px 0; border-radius: 4px; }
+        .tip-box { background: #E8F5E9; border-left: 4px solid #4CAF50; padding: 20px; margin: 20px 0; border-radius: 4px; }
+        .key-concepts { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0; }
+        .concept-card { background: #F8F9FA; padding: 20px; border-radius: 8px; border-top: 3px solid #04AA6D; }
+        .concept-card h4 { color: #04AA6D; margin-bottom: 10px; }
+        ul { line-height: 1.8; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } .sidebar-nav { position: relative; top: 0; } }
+    </style>
+</head>
+<body>
+    <!-- TOP NAV -->
+    <div class="w3-top-nav">
+        <div class="w3-bar">
+            <a href="../../index-w3style.html" class="w3-bar-item w3-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span class="logo-text">TechLearn</span>
+            </a>
+            <div class="w3-bar-right">
+                <a href="../../index-w3style.html" class="w3-bar-item w3-button"><i class="fas fa-home"></i></a>
+                <button class="w3-bar-item w3-button"><i class="fas fa-sign-in-alt"></i> Log in</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TECH NAV -->
+    <div class="w3-tech-nav">
+        <div class="w3-tech-bar">
+            <a href="python.html" class="w3-tech-item"><i class="fab fa-python"></i> PYTHON</a>
+            <a href="ml.html" class="w3-tech-item active"><i class="fas fa-brain"></i> MACHINE LEARNING</a>
+            <a href="dl.html" class="w3-tech-item"><i class="fas fa-layer-group"></i> DEEP LEARNING</a>
+            <a href="nlp.html" class="w3-tech-item"><i class="fas fa-language"></i> NLP</a>
+            <a href="sql.html" class="w3-tech-item"><i class="fas fa-database"></i> SQL</a>
+            <a href="fastapi.html" class="w3-tech-item"><i class="fas fa-bolt"></i> FASTAPI</a>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h1><i class="fas fa-brain"></i> Machine Learning</h1>
+            <p>Master algorithms that learn from data to make predictions and decisions</p>
+        </div>
+
+        <div class="content-grid">
+            <aside class="sidebar-nav">
+                <h3>Contents</h3>
+                <a href="#intro" class="active">Introduction</a>
+                <a href="#types">Types of ML</a>
+                <a href="#supervised">Supervised Learning</a>
+                <a href="#unsupervised">Unsupervised Learning</a>
+                <a href="#algorithms">Key Algorithms</a>
+                <a href="#workflow">ML Workflow</a>
+                <a href="#evaluation">Model Evaluation</a>
+                <a href="#practical">Practical Examples</a>
+            </aside>
+
+            <main class="main-content">
+                <section id="intro" class="section">
+                    <h2>What is Machine Learning?</h2>
+                    <p>Machine Learning (ML) is a subset of Artificial Intelligence that enables systems to learn and improve from experience without being explicitly programmed. It focuses on developing algorithms that can access data and use it to learn for themselves.</p>
+                    
+                    <div class="key-concepts">
+                        <div class="concept-card">
+                            <h4><i class="fas fa-database"></i> Data-Driven</h4>
+                            <p>ML algorithms learn patterns from historical data to make predictions on new data.</p>
+                        </div>
+                        <div class="concept-card">
+                            <h4><i class="fas fa-chart-line"></i> Improves Over Time</h4>
+                            <p>Models become more accurate as they process more data and learn from mistakes.</p>
+                        </div>
+                        <div class="concept-card">
+                            <h4><i class="fas fa-robot"></i> Automation</h4>
+                            <p>Automate decision-making and predictions without human intervention.</p>
+                        </div>
+                    </div>
+
+                    <h3>Why Learn Machine Learning?</h3>
+                    <ul>
+                        <li><strong>High Demand:</strong> ML engineers are among the most sought-after professionals</li>
+                        <li><strong>Diverse Applications:</strong> Healthcare, finance, marketing, autonomous vehicles</li>
+                        <li><strong>Innovation:</strong> Build intelligent systems that solve real-world problems</li>
+                        <li><strong>Career Growth:</strong> Competitive salaries and continuous learning opportunities</li>
+                    </ul>
+                </section>
+
+                <section id="types" class="section">
+                    <h2>Types of Machine Learning</h2>
+                    
+                    <h3>1. Supervised Learning</h3>
+                    <p>The algorithm learns from labeled training data to make predictions on unseen data.</p>
+                    <ul>
+                        <li><strong>Classification:</strong> Predict discrete categories (spam/not spam, cat/dog)</li>
+                        <li><strong>Regression:</strong> Predict continuous values (house prices, temperatures)</li>
+                    </ul>
+                    
+                    <h3>2. Unsupervised Learning</h3>
+                    <p>The algorithm finds patterns in unlabeled data without predefined outcomes.</p>
+                    <ul>
+                        <li><strong>Clustering:</strong> Group similar data points (customer segmentation)</li>
+                        <li><strong>Dimensionality Reduction:</strong> Reduce feature space (PCA, t-SNE)</li>
+                        <li><strong>Anomaly Detection:</strong> Identify unusual patterns (fraud detection)</li>
+                    </ul>
+                    
+                    <h3>3. Reinforcement Learning</h3>
+                    <p>The algorithm learns by interacting with an environment through trial and error.</p>
+                    <ul>
+                        <li>Game playing (AlphaGo, chess)</li>
+                        <li>Robotics and autonomous systems</li>
+                        <li>Recommendation systems</li>
+                    </ul>
+                </section>
+
+                <section id="supervised" class="section">
+                    <h2>Supervised Learning Explained</h2>
+                    <p>In supervised learning, we train models using input-output pairs. The model learns the relationship between inputs (features) and outputs (labels).</p>
+                    
+                    <div class="code-example">
+                        <h4>Linear Regression Example (Python)</h4>
+                        <code><pre>
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+import numpy as np
+
+# Sample data: House size (sq ft) and price
+X = np.array([[1000], [1500], [2000], [2500], [3000]])
+y = np.array([200000, 300000, 400000, 500000, 600000])
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create and train the model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Make predictions
+predictions = model.predict(X_test)
+print(f"Predicted prices: {predictions}")
+print(f"Model Score: {model.score(X_test, y_test)}")
+</pre></code>
+                    </div>
+
+                    <div class="tip-box">
+                        <strong><i class="fas fa-lightbulb"></i> Pro Tip:</strong> Always split your data into training and testing sets to evaluate model performance on unseen data. A common split is 80/20 or 70/30.
+                    </div>
+                </section>
+
+                <section id="unsupervised" class="section">
+                    <h2>Unsupervised Learning</h2>
+                    <p>Unsupervised learning discovers hidden patterns in data without labeled outputs.</p>
+                    
+                    <h3>K-Means Clustering</h3>
+                    <p>Groups data into K clusters based on similarity.</p>
+                    
+                    <div class="code-example">
+                        <h4>K-Means Clustering Example</h4>
+                        <code><pre>
+from sklearn.cluster import KMeans
+import numpy as np
+
+# Sample data: Customer purchase behavior
+X = np.array([[1, 2], [1.5, 1.8], [5, 8], [8, 8], [1, 0.6], [9, 11]])
+
+# Create K-Means model with 2 clusters
+kmeans = KMeans(n_clusters=2, random_state=42)
+kmeans.fit(X)
+
+# Get cluster labels
+labels = kmeans.labels_
+print(f"Cluster labels: {labels}")
+print(f"Cluster centers: {kmeans.cluster_centers_}")
+</pre></code>
+                    </div>
+                </section>
+
+                <section id="algorithms" class="section">
+                    <h2>Key Machine Learning Algorithms</h2>
+                    
+                    <div class="key-concepts">
+                        <div class="concept-card">
+                            <h4>Linear Regression</h4>
+                            <p>Predicts continuous values using a linear relationship between variables.</p>
+                            <p><strong>Use:</strong> Price prediction, sales forecasting</p>
+                        </div>
+                        <div class="concept-card">
+                            <h4>Logistic Regression</h4>
+                            <p>Binary classification algorithm for yes/no predictions.</p>
+                            <p><strong>Use:</strong> Spam detection, disease diagnosis</p>
+                        </div>
+                        <div class="concept-card">
+                            <h4>Decision Trees</h4>
+                            <p>Tree-like model that makes decisions based on feature values.</p>
+                            <p><strong>Use:</strong> Customer segmentation, risk assessment</p>
+                        </div>
+                        <div class="concept-card">
+                            <h4>Random Forest</h4>
+                            <p>Ensemble of decision trees for improved accuracy.</p>
+                            <p><strong>Use:</strong> Feature importance, robust predictions</p>
+                        </div>
+                        <div class="concept-card">
+                            <h4>Support Vector Machines</h4>
+                            <p>Finds optimal hyperplane to separate classes.</p>
+                            <p><strong>Use:</strong> Image classification, text categorization</p>
+                        </div>
+                        <div class="concept-card">
+                            <h4>K-Nearest Neighbors</h4>
+                            <p>Classifies based on similarity to K nearest examples.</p>
+                            <p><strong>Use:</strong> Recommendation systems, pattern recognition</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="workflow" class="section">
+                    <h2>Machine Learning Workflow</h2>
+                    <ol style="line-height: 2;">
+                        <li><strong>Problem Definition:</strong> Clearly define the business problem and ML objective</li>
+                        <li><strong>Data Collection:</strong> Gather relevant and quality data from various sources</li>
+                        <li><strong>Data Exploration:</strong> Analyze data distribution, patterns, and anomalies</li>
+                        <li><strong>Data Preprocessing:</strong> Clean, transform, and prepare data for modeling</li>
+                        <li><strong>Feature Engineering:</strong> Create new features and select important ones</li>
+                        <li><strong>Model Selection:</strong> Choose appropriate algorithms for your problem</li>
+                        <li><strong>Model Training:</strong> Train models on training data</li>
+                        <li><strong>Model Evaluation:</strong> Assess performance using validation data</li>
+                        <li><strong>Hyperparameter Tuning:</strong> Optimize model parameters for better performance</li>
+                        <li><strong>Model Deployment:</strong> Deploy the model to production environment</li>
+                        <li><strong>Monitoring:</strong> Track model performance and retrain when necessary</li>
+                    </ol>
+
+                    <div class="note-box">
+                        <strong><i class="fas fa-info-circle"></i> Note:</strong> Data preprocessing and feature engineering often take 70-80% of the total ML project time. Quality data leads to better models!
+                    </div>
+                </section>
+
+                <section id="evaluation" class="section">
+                    <h2>Model Evaluation Metrics</h2>
+                    
+                    <h3>Classification Metrics</h3>
+                    <ul>
+                        <li><strong>Accuracy:</strong> Percentage of correct predictions</li>
+                        <li><strong>Precision:</strong> Of all positive predictions, how many were actually positive?</li>
+                        <li><strong>Recall:</strong> Of all actual positives, how many did we correctly identify?</li>
+                        <li><strong>F1-Score:</strong> Harmonic mean of precision and recall</li>
+                        <li><strong>ROC-AUC:</strong> Measures model's ability to distinguish between classes</li>
+                    </ul>
+                    
+                    <h3>Regression Metrics</h3>
+                    <ul>
+                        <li><strong>Mean Absolute Error (MAE):</strong> Average absolute difference between predicted and actual</li>
+                        <li><strong>Mean Squared Error (MSE):</strong> Average squared difference (penalizes large errors)</li>
+                        <li><strong>Root Mean Squared Error (RMSE):</strong> Square root of MSE</li>
+                        <li><strong>R-squared (R²):</strong> Proportion of variance explained by the model</li>
+                    </ul>
+
+                    <div class="code-example">
+                        <h4>Evaluation Metrics in Practice</h4>
+                        <code><pre>
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.metrics import mean_squared_error, r2_score
+
+# For Classification
+accuracy = accuracy_score(y_true, y_pred)
+precision = precision_score(y_true, y_pred)
+recall = recall_score(y_true, y_pred)
+f1 = f1_score(y_true, y_pred)
+
+print(f"Accuracy: {accuracy:.2f}")
+print(f"Precision: {precision:.2f}")
+print(f"Recall: {recall:.2f}")
+print(f"F1-Score: {f1:.2f}")
+
+# For Regression
+mse = mean_squared_error(y_true, y_pred)
+rmse = np.sqrt(mse)
+r2 = r2_score(y_true, y_pred)
+
+print(f"RMSE: {rmse:.2f}")
+print(f"R²: {r2:.2f}")
+</pre></code>
+                    </div>
+                </section>
+
+                <section id="practical" class="section">
+                    <h2>Practical Machine Learning Example</h2>
+                    <p>Let's build a complete classification model to predict whether a customer will buy a product.</p>
+                    
+                    <div class="code-example">
+                        <h4>Complete ML Pipeline</h4>
+                        <code><pre>
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report, confusion_matrix
+
+# 1. Load Data
+data = pd.read_csv('customer_data.csv')
+
+# 2. Explore Data
+print(data.head())
+print(data.info())
+
+# 3. Prepare Features and Target
+X = data[['age', 'income', 'browsing_time', 'previous_purchases']]
+y = data['will_buy']
+
+# 4. Split Data
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+# 5. Feature Scaling
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# 6. Train Model
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train_scaled, y_train)
+
+# 7. Make Predictions
+y_pred = model.predict(X_test_scaled)
+
+# 8. Evaluate Model
+print("Confusion Matrix:")
+print(confusion_matrix(y_test, y_pred))
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
+
+# 9. Feature Importance
+feature_importance = pd.DataFrame({
+    'feature': X.columns,
+    'importance': model.feature_importances_
+}).sort_values('importance', ascending=False)
+
+print("\nFeature Importance:")
+print(feature_importance)
+</pre></code>
+                    </div>
+
+                    <div class="tip-box">
+                        <strong><i class="fas fa-rocket"></i> Next Steps:</strong>
+                        <ul>
+                            <li>Practice with real datasets from Kaggle</li>
+                            <li>Learn scikit-learn library in depth</li>
+                            <li>Study feature engineering techniques</li>
+                            <li>Explore advanced algorithms (XGBoost, LightGBM)</li>
+                            <li>Build and deploy your own ML projects</li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="../../js/w3schools-script.js"></script>
+    <script>
+        // Smooth scroll for sidebar
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                window.scrollTo({ top: target.offsetTop - 120, behavior: 'smooth' });
+                document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

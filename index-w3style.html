@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechLearn Hub - Learn Cybersecurity & Data Science</title>
+    <link rel="stylesheet" href="css/w3schools-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- TOP NAVIGATION BAR (Like W3Schools) -->
+    <div class="w3-top-nav">
+        <div class="w3-bar">
+            <!-- Logo -->
+            <a href="index-w3style.html" class="w3-bar-item w3-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span class="logo-text">TechLearn</span>
+            </a>
+            
+            <!-- Main Navigation Dropdowns -->
+            <div class="w3-bar-item w3-dropdown-click">
+                <button class="w3-button">Tutorials <i class="fas fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block">
+                    <a href="#" class="w3-bar-item"><i class="fas fa-database"></i> Data Science Tutorials</a>
+                    <a href="#" class="w3-bar-item"><i class="fas fa-shield-alt"></i> Cybersecurity Tutorials</a>
+                    <a href="tutorials.html" class="w3-bar-item"><i class="fas fa-book"></i> All Tutorials</a>
+                </div>
+            </div>
+            
+            <div class="w3-bar-item w3-dropdown-click">
+                <button class="w3-button">References <i class="fas fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block">
+                    <a href="#" class="w3-bar-item"><i class="fab fa-python"></i> Python Reference</a>
+                    <a href="#" class="w3-bar-item"><i class="fas fa-database"></i> SQL Reference</a>
+                    <a href="#" class="w3-bar-item"><i class="fas fa-network-wired"></i> Network Reference</a>
+                </div>
+            </div>
+            
+            <div class="w3-bar-item w3-dropdown-click">
+                <button class="w3-button">Exercises <i class="fas fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block">
+                    <a href="exercises.html" class="w3-bar-item"><i class="fas fa-code"></i> All Exercises</a>
+                    <a href="#" class="w3-bar-item"><i class="fas fa-brain"></i> Quizzes</a>
+                    <a href="#" class="w3-bar-item"><i class="fas fa-trophy"></i> Challenges</a>
+                </div>
+            </div>
+            
+            <div class="w3-bar-item w3-dropdown-click">
+                <button class="w3-button">Certificates <i class="fas fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block">
+                    <a href="certifications.html" class="w3-bar-item"><i class="fas fa-certificate"></i> Get Certified</a>
+                    <a href="#" class="w3-bar-item"><i class="fas fa-award"></i> My Certificates</a>
+                </div>
+            </div>
+            
+            <!-- Search Bar -->
+            <div class="w3-bar-item w3-search">
+                <input type="text" placeholder="Search..." class="w3-input-search">
+                <button class="w3-button-search"><i class="fas fa-search"></i></button>
+            </div>
+            
+            <!-- Menu Toggle (Mobile) -->
+            <button class="w3-bar-item w3-button w3-hide-large w3-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Right Side Navigation -->
+            <div class="w3-bar-right">
+                <a href="faq.html" class="w3-bar-item w3-button w3-hide-small">Spaces</a>
+                <a href="#" class="w3-bar-item w3-button w3-hide-small">Academy</a>
+                <a href="#" class="w3-bar-item w3-button w3-hide-small w3-white">Upgrade</a>
+                <a href="certifications.html" class="w3-bar-item w3-button w3-hide-small w3-cert-btn">Get Certified</a>
+                <a href="index-w3style.html" class="w3-bar-item w3-button w3-hide-small"><i class="fas fa-home"></i></a>
+                <button class="w3-bar-item w3-button w3-hide-small"><i class="fas fa-sign-in-alt"></i> Log in</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- TECHNOLOGY NAVIGATION BAR (Horizontal Scroll) -->
+    <div class="w3-tech-nav">
+        <div class="w3-tech-bar">
+            <a href="content/datascience/python.html" class="w3-tech-item">
+                <i class="fab fa-python"></i> PYTHON
+            </a>
+            <a href="content/datascience/ml.html" class="w3-tech-item">
+                <i class="fas fa-brain"></i> MACHINE LEARNING
+            </a>
+            <a href="content/datascience/dl.html" class="w3-tech-item">
+                <i class="fas fa-layer-group"></i> DEEP LEARNING
+            </a>
+            <a href="content/datascience/nlp.html" class="w3-tech-item">
+                <i class="fas fa-language"></i> NLP
+            </a>
+            <a href="content/datascience/sql.html" class="w3-tech-item">
+                <i class="fas fa-database"></i> SQL
+            </a>
+            <a href="content/datascience/fastapi.html" class="w3-tech-item">
+                <i class="fas fa-bolt"></i> FASTAPI
+            </a>
+            <a href="content/cybersecurity/fundamentals.html" class="w3-tech-item">
+                <i class="fas fa-shield-alt"></i> CYBERSECURITY
+            </a>
+            <a href="content/cybersecurity/network.html" class="w3-tech-item">
+                <i class="fas fa-network-wired"></i> NETWORK SECURITY
+            </a>
+            <a href="content/cybersecurity/ethics.html" class="w3-tech-item">
+                <i class="fas fa-user-secret"></i> ETHICAL HACKING
+            </a>
+            <a href="content/datascience/pytorch.html" class="w3-tech-item">
+                <i class="fas fa-fire"></i> PYTORCH
+            </a>
+            <a href="content/datascience/tensorflow.html" class="w3-tech-item">
+                <i class="fas fa-brain"></i> TENSORFLOW
+            </a>
+            <a href="content/cybersecurity/cryptography.html" class="w3-tech-item">
+                <i class="fas fa-lock"></i> CRYPTOGRAPHY
+            </a>
+            <a href="#" class="w3-tech-item">
+                <i class="fas fa-ellipsis-h"></i> MORE
+            </a>
+        </div>
+        <!-- Scroll buttons -->
+        <button class="w3-tech-scroll-left"><i class="fas fa-chevron-left"></i></button>
+        <button class="w3-tech-scroll-right"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    
+    <!-- MAIN CONTENT AREA (3-Column Layout) -->
+    <div class="w3-main-container">
+        <!-- LEFT SIDEBAR -->
+        <div class="w3-sidebar-left">
+            <div class="w3-sidebar-content">
+                <h3 class="w3-sidebar-title">Learn Data Science</h3>
+                <div class="w3-sidebar-section">
+                    <a href="#" class="w3-sidebar-link active">
+                        <i class="fas fa-home"></i> DS HOME
+                    </a>
+                    <a href="content/datascience/python.html" class="w3-sidebar-link">
+                        <i class="fab fa-python"></i> Python
+                    </a>
+                    <a href="content/datascience/ml.html" class="w3-sidebar-link">
+                        <i class="fas fa-brain"></i> Machine Learning
+                    </a>
+                    <a href="content/datascience/dl.html" class="w3-sidebar-link">
+                        <i class="fas fa-layer-group"></i> Deep Learning
+                    </a>
+                    <a href="content/datascience/nlp.html" class="w3-sidebar-link">
+                        <i class="fas fa-language"></i> NLP
+                    </a>
+                    <a href="content/datascience/transformers.html" class="w3-sidebar-link">
+                        <i class="fas fa-robot"></i> Transformers
+                    </a>
+                    <a href="content/datascience/rl.html" class="w3-sidebar-link">
+                        <i class="fas fa-gamepad"></i> Reinforcement Learning
+                    </a>
+                    <a href="content/datascience/sql.html" class="w3-sidebar-link">
+                        <i class="fas fa-database"></i> SQL
+                    </a>
+                    <a href="content/datascience/fastapi.html" class="w3-sidebar-link">
+                        <i class="fas fa-bolt"></i> FastAPI
+                    </a>
+                </div>
+                
+                <h3 class="w3-sidebar-title">Cybersecurity</h3>
+                <div class="w3-sidebar-section">
+                    <a href="#" class="w3-sidebar-link">
+                        <i class="fas fa-home"></i> CYBER HOME
+                    </a>
+                    <a href="content/cybersecurity/fundamentals.html" class="w3-sidebar-link">
+                        <i class="fas fa-shield-alt"></i> Fundamentals
+                    </a>
+                    <a href="content/cybersecurity/network.html" class="w3-sidebar-link">
+                        <i class="fas fa-network-wired"></i> Network Security
+                    </a>
+                    <a href="content/cybersecurity/cryptography.html" class="w3-sidebar-link">
+                        <i class="fas fa-lock"></i> Cryptography
+                    </a>
+                    <a href="content/cybersecurity/ethics.html" class="w3-sidebar-link">
+                        <i class="fas fa-user-secret"></i> Ethical Hacking
+                    </a>
+                    <a href="content/cybersecurity/forensics.html" class="w3-sidebar-link">
+                        <i class="fas fa-search"></i> Digital Forensics
+                    </a>
+                    <a href="content/cybersecurity/incident.html" class="w3-sidebar-link">
+                        <i class="fas fa-exclamation-triangle"></i> Incident Response
+                    </a>
+                    <a href="content/cybersecurity/malware.html" class="w3-sidebar-link">
+                        <i class="fas fa-bug"></i> Malware Analysis
+                    </a>
+                </div>
+                
+                <h3 class="w3-sidebar-title">Resources</h3>
+                <div class="w3-sidebar-section">
+                    <a href="exercises.html" class="w3-sidebar-link">
+                        <i class="fas fa-code"></i> Exercises
+                    </a>
+                    <a href="tutorials.html" class="w3-sidebar-link">
+                        <i class="fas fa-book"></i> Tutorials
+                    </a>
+                    <a href="certifications.html" class="w3-sidebar-link">
+                        <i class="fas fa-certificate"></i> Certificates
+                    </a>
+                    <a href="faq.html" class="w3-sidebar-link">
+                        <i class="fas fa-question-circle"></i> FAQ
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MAIN CONTENT -->
+        <div class="w3-main-content">
+            <!-- Hero Section -->
+            <div class="w3-hero">
+                <h1 class="w3-hero-title">Learn Cybersecurity & Data Science</h1>
+                <p class="w3-hero-subtitle">With the world's most comprehensive learning platform for tech skills</p>
+                <div class="w3-hero-buttons">
+                    <a href="#" class="w3-btn w3-btn-primary">
+                        <i class="fas fa-play-circle"></i> Start Learning Data Science
+                    </a>
+                    <a href="#" class="w3-btn w3-btn-secondary">
+                        <i class="fas fa-shield-alt"></i> Start Learning Cybersecurity
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Popular Tutorials -->
+            <div class="w3-section">
+                <h2 class="w3-section-title">
+                    <i class="fas fa-fire"></i> Popular Tutorials
+                </h2>
+                <div class="w3-grid-3">
+                    <div class="w3-card w3-card-data">
+                        <div class="w3-card-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h3>Python for Data Science</h3>
+                        <p>Learn Python programming with focus on data science applications</p>
+                        <a href="content/datascience/python.html" class="w3-card-link">
+                            Learn Python <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="w3-card w3-card-data">
+                        <div class="w3-card-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Machine Learning</h3>
+                        <p>Master ML algorithms and build predictive models</p>
+                        <a href="content/datascience/ml.html" class="w3-card-link">
+                            Learn ML <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="w3-card w3-card-cyber">
+                        <div class="w3-card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Cybersecurity Basics</h3>
+                        <p>Understand security fundamentals and best practices</p>
+                        <a href="content/cybersecurity/fundamentals.html" class="w3-card-link">
+                            Learn Security <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Learning Paths -->
+            <div class="w3-section">
+                <h2 class="w3-section-title">
+                    <i class="fas fa-route"></i> Learning Paths
+                </h2>
+                <div class="w3-grid-2">
+                    <div class="w3-path-card w3-path-data">
+                        <h3><i class="fas fa-database"></i> Data Science Path</h3>
+                        <ul class="w3-path-list">
+                            <li><i class="fas fa-check-circle"></i> Python Programming</li>
+                            <li><i class="fas fa-check-circle"></i> Data Analysis with Pandas</li>
+                            <li><i class="fas fa-check-circle"></i> Machine Learning</li>
+                            <li><i class="fas fa-check-circle"></i> Deep Learning</li>
+                            <li><i class="fas fa-check-circle"></i> NLP & Transformers</li>
+                        </ul>
+                        <a href="#" class="w3-btn w3-btn-outline">Explore Path</a>
+                    </div>
+                    
+                    <div class="w3-path-card w3-path-cyber">
+                        <h3><i class="fas fa-shield-alt"></i> Cybersecurity Path</h3>
+                        <ul class="w3-path-list">
+                            <li><i class="fas fa-check-circle"></i> Security Fundamentals</li>
+                            <li><i class="fas fa-check-circle"></i> Network Security</li>
+                            <li><i class="fas fa-check-circle"></i> Ethical Hacking</li>
+                            <li><i class="fas fa-check-circle"></i> Cryptography</li>
+                            <li><i class="fas fa-check-circle"></i> Incident Response</li>
+                        </ul>
+                        <a href="#" class="w3-btn w3-btn-outline">Explore Path</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Get Certified -->
+            <div class="w3-section w3-certified-section">
+                <div class="w3-certified-content">
+                    <h2><i class="fas fa-certificate"></i> Get Certified</h2>
+                    <p>Validate your skills with industry-recognized certifications</p>
+                    <a href="certifications.html" class="w3-btn w3-btn-cert">
+                        View Certifications <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                <div class="w3-certified-image">
+                    <i class="fas fa-award"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- RIGHT SIDEBAR -->
+        <div class="w3-sidebar-right">
+            <!-- Get Certified Card -->
+            <div class="w3-right-card w3-cert-card">
+                <div class="w3-cert-badge">COURSES STARTING AT $14.99</div>
+                <h3>Get Certified.</h3>
+                <h3>Get Hired.</h3>
+                <div class="w3-cert-image">
+                    <i class="fas fa-certificate"></i>
+                    <p>CERTIFICATE OF COMPLETION</p>
+                </div>
+                <h4>CERTIFIED DEVELOPERS</h4>
+                <a href="certifications.html" class="w3-btn w3-btn-cert-full">Learn more</a>
+            </div>
+            
+            <!-- Upgrade Card -->
+            <div class="w3-right-card w3-upgrade-card">
+                <h4>ADVERTISEMENT</h4>
+                <div class="w3-ad-space">
+                    <p>Premium Features</p>
+                    <ul>
+                        <li>Ad-free experience</li>
+                        <li>Advanced tutorials</li>
+                        <li>Priority support</li>
+                        <li>Certificate discounts</li>
+                    </ul>
+                    <a href="#" class="w3-btn w3-btn-upgrade">Upgrade Now</a>
+                </div>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="w3-right-card w3-social-card">
+                <h4>FOLLOW US</h4>
+                <div class="w3-social-links">
+                    <a href="#" class="w3-social-btn"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="w3-social-btn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="w3-social-btn"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="w3-social-btn"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="w3-social-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w3-social-btn"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            
+            <!-- Remove Ads -->
+            <div class="w3-right-card w3-remove-ads">
+                <a href="#">REMOVE ADS</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FOOTER -->
+    <footer class="w3-footer">
+        <div class="w3-footer-content">
+            <div class="w3-footer-grid">
+                <div class="w3-footer-col">
+                    <h4>Top Tutorials</h4>
+                    <a href="#">Python Tutorial</a>
+                    <a href="#">ML Tutorial</a>
+                    <a href="#">SQL Tutorial</a>
+                    <a href="#">Cyber Tutorial</a>
+                </div>
+                <div class="w3-footer-col">
+                    <h4>Top References</h4>
+                    <a href="#">Python Reference</a>
+                    <a href="#">SQL Reference</a>
+                    <a href="#">Network Reference</a>
+                </div>
+                <div class="w3-footer-col">
+                    <h4>Top Examples</h4>
+                    <a href="#">Python Examples</a>
+                    <a href="#">ML Examples</a>
+                    <a href="#">Security Examples</a>
+                </div>
+                <div class="w3-footer-col">
+                    <h4>Get Certified</h4>
+                    <a href="certifications.html">Python Certification</a>
+                    <a href="certifications.html">ML Certification</a>
+                    <a href="certifications.html">Security Certification</a>
+                </div>
+            </div>
+            <div class="w3-footer-bottom">
+                <p>&copy; 2024 TechLearn Hub. All Rights Reserved.</p>
+                <div class="w3-footer-links">
+                    <a href="#">About</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Contact</a>
+                </div>
+                <p style="font-size: 0.85rem; color: #999; margin-top: 10px;">
+                    Design inspired by W3Schools.com
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/w3schools-script.js"></script>
+    <script src="js/api-redirect.js"></script>
+</body>
+</html>

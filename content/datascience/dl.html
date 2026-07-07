@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning - TechLearn Hub</title>
+    <link rel="stylesheet" href="../../css/w3schools-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { padding-top: 103px; }
+        .content-wrapper { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+        .page-header { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 50px; border-radius: 10px; margin-bottom: 40px; }
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 15px; }
+        .content-grid { display: grid; grid-template-columns: 250px 1fr; gap: 30px; }
+        .sidebar-nav { background: white; border: 1px solid #E7E9EB; border-radius: 8px; padding: 20px; height: fit-content; position: sticky; top: 120px; }
+        .sidebar-nav h3 { margin-bottom: 20px; color: #282A35; }
+        .sidebar-nav a { display: block; padding: 10px; color: #000; text-decoration: none; border-radius: 4px; margin-bottom: 5px; transition: 0.3s; }
+        .sidebar-nav a:hover { background: #667eea; color: white; }
+        .sidebar-nav a.active { background: #667eea; color: white; }
+        .main-content { background: white; border: 1px solid #E7E9EB; border-radius: 8px; padding: 40px; }
+        .section { margin-bottom: 50px; }
+        .section h2 { color: #667eea; margin-bottom: 20px; font-size: 2rem; }
+        .section h3 { color: #282A35; margin: 25px 0 15px; }
+        .code-example { background: #F1F1F1; border-left: 4px solid #667eea; padding: 20px; margin: 20px 0; border-radius: 4px; overflow-x: auto; }
+        .highlight-box { background: #F3F0FF; border-left: 4px solid #667eea; padding: 20px; margin: 20px 0; border-radius: 4px; }
+        .architecture-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 30px 0; }
+        .arch-card { background: #F8F9FA; padding: 25px; border-radius: 8px; border-top: 3px solid #667eea; }
+        .arch-card h4 { color: #667eea; margin-bottom: 10px; }
+        ul { line-height: 1.8; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="w3-top-nav">
+        <div class="w3-bar">
+            <a href="../../index-w3style.html" class="w3-bar-item w3-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span class="logo-text">TechLearn</span>
+            </a>
+            <div class="w3-bar-right">
+                <a href="../../index-w3style.html" class="w3-bar-item w3-button"><i class="fas fa-home"></i></a>
+                <button class="w3-bar-item w3-button"><i class="fas fa-sign-in-alt"></i> Log in</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-tech-nav">
+        <div class="w3-tech-bar">
+            <a href="python.html" class="w3-tech-item"><i class="fab fa-python"></i> PYTHON</a>
+            <a href="ml.html" class="w3-tech-item"><i class="fas fa-brain"></i> MACHINE LEARNING</a>
+            <a href="dl.html" class="w3-tech-item active"><i class="fas fa-layer-group"></i> DEEP LEARNING</a>
+            <a href="nlp.html" class="w3-tech-item"><i class="fas fa-language"></i> NLP</a>
+            <a href="sql.html" class="w3-tech-item"><i class="fas fa-database"></i> SQL</a>
+            <a href="fastapi.html" class="w3-tech-item"><i class="fas fa-bolt"></i> FASTAPI</a>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h1><i class="fas fa-layer-group"></i> Deep Learning</h1>
+            <p>Master neural networks and build intelligent systems that mimic human learning</p>
+        </div>
+
+        <div class="content-grid">
+            <aside class="sidebar-nav">
+                <h3>Contents</h3>
+                <a href="#intro" class="active">Introduction</a>
+                <a href="#neural-networks">Neural Networks</a>
+                <a href="#architectures">DL Architectures</a>
+                <a href="#cnn">CNNs</a>
+                <a href="#rnn">RNNs & LSTMs</a>
+                <a href="#training">Training Process</a>
+                <a href="#frameworks">Frameworks</a>
+                <a href="#applications">Applications</a>
+            </aside>
+
+            <main class="main-content">
+                <section id="intro" class="section">
+                    <h2>What is Deep Learning?</h2>
+                    <p>Deep Learning is a subset of Machine Learning that uses artificial neural networks with multiple layers (hence "deep") to learn hierarchical representations of data. It has revolutionized AI by achieving human-level performance in tasks like image recognition, natural language processing, and game playing.</p>
+                    
+                    <h3>Why Deep Learning?</h3>
+                    <ul>
+                        <li><strong>Automatic Feature Learning:</strong> No need for manual feature engineering</li>
+                        <li><strong>Handles Complex Data:</strong> Excels with images, audio, text, and video</li>
+                        <li><strong>Scalability:</strong> Performance improves with more data and compute</li>
+                        <li><strong>State-of-the-Art Results:</strong> Best performance in computer vision, NLP, and more</li>
+                        <li><strong>End-to-End Learning:</strong> Learn directly from raw data to predictions</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <strong><i class="fas fa-chart-line"></i> The Deep Learning Revolution:</strong>
+                        <p>Since 2012, deep learning has transformed AI with breakthroughs like ImageNet classification, AlphaGo defeating world champions, GPT language models, and self-driving cars.</p>
+                    </div>
+                </section>
+
+                <section id="neural-networks" class="section">
+                    <h2>Neural Networks Basics</h2>
+                    <p>Artificial Neural Networks (ANNs) are inspired by biological neurons in the human brain. They consist of interconnected nodes (neurons) organized in layers.</p>
+                    
+                    <h3>Network Structure</h3>
+                    <ul>
+                        <li><strong>Input Layer:</strong> Receives the raw data/features</li>
+                        <li><strong>Hidden Layers:</strong> Process and transform the data</li>
+                        <li><strong>Output Layer:</strong> Produces the final prediction</li>
+                    </ul>
+
+                    <div class="code-example">
+                        <h4>Simple Neural Network in PyTorch</h4>
+                        <code><pre>
+import torch
+import torch.nn as nn
+
+class SimpleNN(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size):
+        super(SimpleNN, self).__init__()
+        self.layer1 = nn.Linear(input_size, hidden_size)
+        self.relu = nn.ReLU()
+        self.layer2 = nn.Linear(hidden_size, output_size)
+        self.sigmoid = nn.Sigmoid()
+    
+    def forward(self, x):
+        x = self.layer1(x)
+        x = self.relu(x)
+        x = self.layer2(x)
+        x = self.sigmoid(x)
+        return x
+
+# Create model
+model = SimpleNN(input_size=10, hidden_size=20, output_size=1)
+print(model)
+</pre></code>
+                    </div>
+
+                    <h3>Activation Functions</h3>
+                    <ul>
+                        <li><strong>ReLU:</strong> f(x) = max(0, x) - Most commonly used</li>
+                        <li><strong>Sigmoid:</strong> f(x) = 1/(1+e^-x) - Output between 0 and 1</li>
+                        <li><strong>Tanh:</strong> f(x) = tanh(x) - Output between -1 and 1</li>
+                        <li><strong>Softmax:</strong> For multi-class classification</li>
+                    </ul>
+                </section>
+
+                <section id="architectures" class="section">
+                    <h2>Deep Learning Architectures</h2>
+                    
+                    <div class="architecture-grid">
+                        <div class="arch-card">
+                            <h4><i class="fas fa-image"></i> Convolutional Neural Networks (CNNs)</h4>
+                            <p>Specialized for image and spatial data processing.</p>
+                            <p><strong>Used in:</strong> Image classification, object detection, facial recognition</p>
+                        </div>
+                        <div class="arch-card">
+                            <h4><i class="fas fa-stream"></i> Recurrent Neural Networks (RNNs)</h4>
+                            <p>Process sequential data with memory of previous inputs.</p>
+                            <p><strong>Used in:</strong> Time series, speech recognition, language modeling</p>
+                        </div>
+                        <div class="arch-card">
+                            <h4><i class="fas fa-bolt"></i> Transformers</h4>
+                            <p>Attention-based architecture for parallel processing.</p>
+                            <p><strong>Used in:</strong> NLP (BERT, GPT), machine translation, image generation</p>
+                        </div>
+                        <div class="arch-card">
+                            <h4><i class="fas fa-robot"></i> Autoencoders</h4>
+                            <p>Learn compressed representations of data.</p>
+                            <p><strong>Used in:</strong> Dimensionality reduction, denoising, anomaly detection</p>
+                        </div>
+                        <div class="arch-card">
+                            <h4><i class="fas fa-palette"></i> GANs</h4>
+                            <p>Generative Adversarial Networks for creating new data.</p>
+                            <p><strong>Used in:</strong> Image generation, style transfer, data augmentation</p>
+                        </div>
+                        <div class="arch-card">
+                            <h4><i class="fas fa-sitemap"></i> Graph Neural Networks</h4>
+                            <p>Process graph-structured data and relationships.</p>
+                            <p><strong>Used in:</strong> Social networks, molecule analysis, recommendation systems</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="cnn" class="section">
+                    <h2>Convolutional Neural Networks (CNNs)</h2>
+                    <p>CNNs are the go-to architecture for computer vision tasks. They use convolutional layers to automatically learn spatial hierarchies of features.</p>
+                    
+                    <h3>Key Components</h3>
+                    <ul>
+                        <li><strong>Convolutional Layers:</strong> Apply filters to detect features (edges, textures, patterns)</li>
+                        <li><strong>Pooling Layers:</strong> Reduce spatial dimensions while retaining important information</li>
+                        <li><strong>Fully Connected Layers:</strong> Make final classification decisions</li>
+                    </ul>
+
+                    <div class="code-example">
+                        <h4>CNN for Image Classification</h4>
+                        <code><pre>
+import torch.nn as nn
+
+class CNN(nn.Module):
+    def __init__(self):
+        super(CNN, self).__init__()
+        # Convolutional layers
+        self.conv1 = nn.Conv2d(3, 32, kernel_size=3, padding=1)
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=3, padding=1)
+        self.conv3 = nn.Conv2d(64, 128, kernel_size=3, padding=1)
+        
+        # Pooling layer
+        self.pool = nn.MaxPool2d(2, 2)
+        
+        # Fully connected layers
+        self.fc1 = nn.Linear(128 * 4 * 4, 512)
+        self.fc2 = nn.Linear(512, 10)  # 10 classes
+        
+        self.relu = nn.ReLU()
+        self.dropout = nn.Dropout(0.5)
+    
+    def forward(self, x):
+        # Convolutional layers with pooling
+        x = self.pool(self.relu(self.conv1(x)))
+        x = self.pool(self.relu(self.conv2(x)))
+        x = self.pool(self.relu(self.conv3(x)))
+        
+        # Flatten
+        x = x.view(-1, 128 * 4 * 4)
+        
+        # Fully connected layers
+        x = self.relu(self.fc1(x))
+        x = self.dropout(x)
+        x = self.fc2(x)
+        return x
+
+model = CNN()
+</pre></code>
+                    </div>
+                </section>
+
+                <section id="rnn" class="section">
+                    <h2>Recurrent Neural Networks (RNNs)</h2>
+                    <p>RNNs process sequential data by maintaining hidden states that capture information from previous time steps.</p>
+                    
+                    <h3>LSTM (Long Short-Term Memory)</h3>
+                    <p>LSTMs are a special kind of RNN designed to handle long-term dependencies and avoid the vanishing gradient problem.</p>
+                    
+                    <div class="code-example">
+                        <h4>LSTM for Sequence Prediction</h4>
+                        <code><pre>
+class LSTMModel(nn.Module):
+    def __init__(self, input_size, hidden_size, num_layers, output_size):
+        super(LSTMModel, self).__init__()
+        self.hidden_size = hidden_size
+        self.num_layers = num_layers
+        
+        # LSTM layer
+        self.lstm = nn.LSTM(input_size, hidden_size, num_layers, 
+                           batch_first=True, dropout=0.2)
+        
+        # Fully connected layer
+        self.fc = nn.Linear(hidden_size, output_size)
+    
+    def forward(self, x):
+        # Initialize hidden and cell states
+        h0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size)
+        c0 = torch.zeros(self.num_layers, x.size(0), self.hidden_size)
+        
+        # Forward propagate LSTM
+        out, _ = self.lstm(x, (h0, c0))
+        
+        # Get output from last time step
+        out = self.fc(out[:, -1, :])
+        return out
+
+model = LSTMModel(input_size=10, hidden_size=128, num_layers=2, output_size=1)
+</pre></code>
+                    </div>
+                </section>
+
+                <section id="training" class="section">
+                    <h2>Training Deep Neural Networks</h2>
+                    
+                    <h3>The Training Process</h3>
+                    <ol style="line-height: 2;">
+                        <li><strong>Forward Pass:</strong> Input data flows through the network to produce predictions</li>
+                        <li><strong>Loss Calculation:</strong> Measure the difference between predictions and actual labels</li>
+                        <li><strong>Backward Pass:</strong> Calculate gradients using backpropagation</li>
+                        <li><strong>Weight Update:</strong> Adjust weights using optimization algorithm (SGD, Adam)</li>
+                        <li><strong>Repeat:</strong> Iterate for multiple epochs</li>
+                    </ol>
+
+                    <div class="code-example">
+                        <h4>Complete Training Loop</h4>
+                        <code><pre>
+import torch.optim as optim
+
+# Define model, loss, and optimizer
+model = CNN()
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+# Training loop
+num_epochs = 10
+for epoch in range(num_epochs):
+    model.train()
+    running_loss = 0.0
+    
+    for batch_idx, (data, target) in enumerate(train_loader):
+        # Zero gradients
+        optimizer.zero_grad()
+        
+        # Forward pass
+        output = model(data)
+        loss = criterion(output, target)
+        
+        # Backward pass
+        loss.backward()
+        
+        # Update weights
+        optimizer.step()
+        
+        running_loss += loss.item()
+    
+    # Print statistics
+    print(f'Epoch [{epoch+1}/{num_epochs}], Loss: {running_loss/len(train_loader):.4f}')
+
+print('Training complete!')
+</pre></code>
+                    </div>
+
+                    <h3>Optimization Techniques</h3>
+                    <ul>
+                        <li><strong>Batch Normalization:</strong> Normalize layer inputs for faster training</li>
+                        <li><strong>Dropout:</strong> Randomly drop neurons to prevent overfitting</li>
+                        <li><strong>Learning Rate Scheduling:</strong> Adjust learning rate during training</li>
+                        <li><strong>Data Augmentation:</strong> Create variations of training data</li>
+                        <li><strong>Transfer Learning:</strong> Use pre-trained models as starting point</li>
+                    </ul>
+                </section>
+
+                <section id="frameworks" class="section">
+                    <h2>Deep Learning Frameworks</h2>
+                    
+                    <div class="architecture-grid">
+                        <div class="arch-card">
+                            <h4><i class="fas fa-fire"></i> PyTorch</h4>
+                            <p>Dynamic computation graphs, Pythonic, popular in research.</p>
+                            <p><strong>Best for:</strong> Research, prototyping, flexibility</p>
+                        </div>
+                        <div class="arch-card">
+                            <h4><i class="fas fa-brain"></i> TensorFlow</h4>
+                            <p>Production-ready, TensorBoard visualization, extensive ecosystem.</p>
+                            <p><strong>Best for:</strong> Production deployment, mobile apps</p>
+                        </div>
+                        <div class="arch-card">
+                            <h4><i class="fas fa-code"></i> Keras</h4>
+                            <p>High-level API, beginner-friendly, now part of TensorFlow.</p>
+                            <p><strong>Best for:</strong> Quick prototyping, beginners</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="applications" class="section">
+                    <h2>Real-World Applications</h2>
+                    
+                    <h3>Computer Vision</h3>
+                    <ul>
+                        <li>Facial recognition and authentication</li>
+                        <li>Medical image analysis and diagnosis</li>
+                        <li>Autonomous vehicles and object detection</li>
+                        <li>Image generation and style transfer</li>
+                    </ul>
+                    
+                    <h3>Natural Language Processing</h3>
+                    <ul>
+                        <li>Machine translation (Google Translate)</li>
+                        <li>Chatbots and virtual assistants (Siri, Alexa)</li>
+                        <li>Sentiment analysis and text classification</li>
+                        <li>Text generation (GPT models)</li>
+                    </ul>
+                    
+                    <h3>Other Applications</h3>
+                    <ul>
+                        <li>Speech recognition and synthesis</li>
+                        <li>Recommendation systems (Netflix, YouTube)</li>
+                        <li>Game playing (AlphaGo, OpenAI Five)</li>
+                        <li>Drug discovery and protein folding</li>
+                        <li>Fraud detection and cybersecurity</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <strong><i class="fas fa-graduation-cap"></i> Learning Path:</strong>
+                        <ol>
+                            <li>Master Python and NumPy fundamentals</li>
+                            <li>Learn PyTorch or TensorFlow</li>
+                            <li>Implement basic neural networks from scratch</li>
+                            <li>Study CNNs and work on image datasets</li>
+                            <li>Explore RNNs and sequential data</li>
+                            <li>Learn Transformers and modern architectures</li>
+                            <li>Build and deploy real projects</li>
+                        </ol>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="../../js/w3schools-script.js"></script>
+    <script>
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                window.scrollTo({ top: target.offsetTop - 120, behavior: 'smooth' });
+                document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

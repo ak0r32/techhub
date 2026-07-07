@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page - Navigation Check</title>
+    <link rel="stylesheet" href="css/w3schools-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional fixes for navigation */
+        body {
+            padding-top: 103px !important;
+        }
+        
+        .w3-top-nav {
+            width: 100%;
+        }
+        
+        .w3-tech-nav {
+            position: relative;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- TOP NAVIGATION BAR -->
+    <div class="w3-top-nav">
+        <div class="w3-bar">
+            <a href="#" class="w3-bar-item w3-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span class="logo-text">TechLearn</span>
+            </a>
+            
+            <div class="w3-bar-item w3-dropdown-click">
+                <button class="w3-button">Tutorials <i class="fas fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block">
+                    <a href="#" class="w3-bar-item"><i class="fas fa-database"></i> Data Science</a>
+                    <a href="#" class="w3-bar-item"><i class="fas fa-shield-alt"></i> Cybersecurity</a>
+                </div>
+            </div>
+            
+            <div class="w3-bar-right">
+                <button class="w3-bar-item w3-button">Log in</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- TECH NAV -->
+    <div class="w3-tech-nav">
+        <div class="w3-tech-bar">
+            <a href="#" class="w3-tech-item"><i class="fab fa-python"></i> PYTHON</a>
+            <a href="#" class="w3-tech-item"><i class="fas fa-brain"></i> ML</a>
+            <a href="#" class="w3-tech-item"><i class="fas fa-database"></i> SQL</a>
+        </div>
+        <button class="w3-tech-scroll-left"><i class="fas fa-chevron-left"></i></button>
+        <button class="w3-tech-scroll-right"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    
+    <!-- CONTENT -->
+    <div style="padding: 32px;">
+        <h1>Test Page</h1>
+        <p>If you can see this content below the navigation bars, the layout is working.</p>
+        <p>Test the dropdown by clicking "Tutorials" button.</p>
+        <p style="height: 2000px;">Scroll down to test sticky navigation...</p>
+    </div>
+    
+    <script>
+        console.log('Page loaded');
+        
+        // Test dropdown
+        const dropdown = document.querySelector('.w3-dropdown-click .w3-button');
+        if (dropdown) {
+            dropdown.addEventListener('click', function() {
+                console.log('Dropdown clicked');
+                this.closest('.w3-dropdown-click').classList.toggle('show');
+            });
+        }
+        
+        // Test scroll buttons
+        const scrollLeft = document.querySelector('.w3-tech-scroll-left');
+        const scrollRight = document.querySelector('.w3-tech-scroll-right');
+        const techBar = document.querySelector('.w3-tech-bar');
+        
+        if (scrollLeft && scrollRight && techBar) {
+            scrollLeft.addEventListener('click', () => {
+                console.log('Scroll left clicked');
+                techBar.scrollBy({ left: -200, behavior: 'smooth' });
+            });
+            
+            scrollRight.addEventListener('click', () => {
+                console.log('Scroll right clicked');
+                techBar.scrollBy({ left: 200, behavior: 'smooth' });
+            });
+        }
+        
+        console.log('All event listeners attached');
+    </script>
+</body>
+</html>

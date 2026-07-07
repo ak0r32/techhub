@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Language Processing - TechLearn Hub</title>
+    <link rel="stylesheet" href="../../css/w3schools-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { padding-top: 103px; }
+        .content-wrapper { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+        .page-header { background: linear-gradient(135deg, #f093fb, #f5576c); color: white; padding: 50px; border-radius: 10px; margin-bottom: 40px; }
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 15px; }
+        .content-grid { display: grid; grid-template-columns: 250px 1fr; gap: 30px; }
+        .sidebar-nav { background: white; border: 1px solid #E7E9EB; border-radius: 8px; padding: 20px; height: fit-content; position: sticky; top: 120px; }
+        .sidebar-nav a { display: block; padding: 10px; color: #000; text-decoration: none; border-radius: 4px; margin-bottom: 5px; }
+        .sidebar-nav a:hover, .sidebar-nav a.active { background: #f5576c; color: white; }
+        .main-content { background: white; border: 1px solid #E7E9EB; border-radius: 8px; padding: 40px; }
+        .section { margin-bottom: 40px; }
+        .section h2 { color: #f5576c; margin-bottom: 20px; }
+        .code-example { background: #F1F1F1; border-left: 4px solid #f5576c; padding: 20px; margin: 20px 0; overflow-x: auto; }
+        .technique-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0; }
+        .technique-card { background: #FFF5F7; padding: 20px; border-radius: 8px; border-top: 3px solid #f5576c; }
+        @media (max-width: 768px) { .content-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="w3-top-nav">
+        <div class="w3-bar">
+            <a href="../../index-w3style.html" class="w3-bar-item w3-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span class="logo-text">TechLearn</span>
+            </a>
+            <div class="w3-bar-right">
+                <a href="../../index-w3style.html" class="w3-bar-item w3-button"><i class="fas fa-home"></i></a>
+                <button class="w3-bar-item w3-button">Log in</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-tech-nav">
+        <div class="w3-tech-bar">
+            <a href="python.html" class="w3-tech-item"><i class="fab fa-python"></i> PYTHON</a>
+            <a href="ml.html" class="w3-tech-item"><i class="fas fa-brain"></i> ML</a>
+            <a href="dl.html" class="w3-tech-item"><i class="fas fa-layer-group"></i> DL</a>
+            <a href="nlp.html" class="w3-tech-item active"><i class="fas fa-language"></i> NLP</a>
+            <a href="sql.html" class="w3-tech-item"><i class="fas fa-database"></i> SQL</a>
+            <a href="fastapi.html" class="w3-tech-item"><i class="fas fa-bolt"></i> FASTAPI</a>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h1><i class="fas fa-language"></i> Natural Language Processing</h1>
+            <p>Enable machines to understand, interpret, and generate human language</p>
+        </div>
+
+        <div class="content-grid">
+            <aside class="sidebar-nav">
+                <h3>Contents</h3>
+                <a href="#intro" class="active">Introduction</a>
+                <a href="#preprocessing">Text Preprocessing</a>
+                <a href="#techniques">NLP Techniques</a>
+                <a href="#transformers">Transformers</a>
+                <a href="#applications">Applications</a>
+                <a href="#tools">Libraries & Tools</a>
+            </aside>
+
+            <main class="main-content">
+                <section id="intro" class="section">
+                    <h2>What is NLP?</h2>
+                    <p>Natural Language Processing (NLP) is a field of AI that focuses on the interaction between computers and human language. It enables machines to read, understand, and derive meaning from human language in a valuable way.</p>
+                    
+                    <h3>Key Challenges in NLP</h3>
+                    <ul>
+                        <li><strong>Ambiguity:</strong> Words and sentences can have multiple meanings</li>
+                        <li><strong>Context:</strong> Understanding requires contextual knowledge</li>
+                        <li><strong>Variability:</strong> Many ways to express the same idea</li>
+                        <li><strong>Implicit Information:</strong> Understanding implied meanings</li>
+                    </ul>
+                </section>
+
+                <section id="preprocessing" class="section">
+                    <h2>Text Preprocessing</h2>
+                    <p>Clean and prepare text data for analysis and modeling.</p>
+                    
+                    <div class="code-example">
+                        <h4>Text Preprocessing Pipeline</h4>
+                        <code><pre>
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer, WordNetLemmatizer
+
+text = "Natural Language Processing is amazing!"
+
+# 1. Lowercasing
+text_lower = text.lower()
+
+# 2. Tokenization
+tokens = word_tokenize(text_lower)
+
+# 3. Remove stopwords
+stop_words = set(stopwords.words('english'))
+filtered_tokens = [w for w in tokens if w not in stop_words]
+
+# 4. Stemming
+stemmer = PorterStemmer()
+stemmed = [stemmer.stem(w) for w in filtered_tokens]
+
+# 5. Lemmatization
+lemmatizer = WordNetLemmatizer()
+lemmatized = [lemmatizer.lemmatize(w) for w in filtered_tokens]
+
+print("Original:", text)
+print("Tokens:", tokens)
+print("Filtered:", filtered_tokens)
+print("Stemmed:", stemmed)
+print("Lemmatized:", lemmatized)
+</pre></code>
+                    </div>
+                </section>
+
+                <section id="techniques" class="section">
+                    <h2>Core NLP Techniques</h2>
+                    
+                    <div class="technique-grid">
+                        <div class="technique-card">
+                            <h4>Tokenization</h4>
+                            <p>Breaking text into words, sentences, or subwords.</p>
+                        </div>
+                        <div class="technique-card">
+                            <h4>Named Entity Recognition</h4>
+                            <p>Identify and classify entities (names, dates, locations).</p>
+                        </div>
+                        <div class="technique-card">
+                            <h4>Part-of-Speech Tagging</h4>
+                            <p>Label words as nouns, verbs, adjectives, etc.</p>
+                        </div>
+                        <div class="technique-card">
+                            <h4>Sentiment Analysis</h4>
+                            <p>Determine emotional tone of text (positive/negative).</p>
+                        </div>
+                        <div class="technique-card">
+                            <h4>Text Classification</h4>
+                            <p>Categorize documents into predefined classes.</p>
+                        </div>
+                        <div class="technique-card">
+                            <h4>Machine Translation</h4>
+                            <p>Automatically translate text between languages.</p>
+                        </div>
+                    </div>
+
+                    <div class="code-example">
+                        <h4>Sentiment Analysis with Transformers</h4>
+                        <code><pre>
+from transformers import pipeline
+
+# Load pre-trained sentiment analysis model
+sentiment_analyzer = pipeline("sentiment-analysis")
+
+# Analyze sentiment
+texts = [
+    "I love this product! It's amazing!",
+    "This is terrible, I hate it.",
+    "It's okay, nothing special."
+]
+
+for text in texts:
+    result = sentiment_analyzer(text)[0]
+    print(f"Text: {text}")
+    print(f"Sentiment: {result['label']}, Score: {result['score']:.4f}\n")
+</pre></code>
+                    </div>
+                </section>
+
+                <section id="transformers" class="section">
+                    <h2>Transformer Models</h2>
+                    <p>Transformers have revolutionized NLP with attention mechanisms and parallel processing.</p>
+                    
+                    <h3>Popular Models</h3>
+                    <ul>
+                        <li><strong>BERT:</strong> Bidirectional Encoder for understanding context</li>
+                        <li><strong>GPT:</strong> Generative Pre-trained Transformer for text generation</li>
+                        <li><strong>T5:</strong> Text-to-Text Transfer Transformer for all NLP tasks</li>
+                        <li><strong>RoBERTa:</strong> Optimized BERT variant</li>
+                    </ul>
+
+                    <div class="code-example">
+                        <h4>Using BERT for Text Classification</h4>
+                        <code><pre>
+from transformers import BertTokenizer, BertForSequenceClassification
+import torch
+
+# Load pre-trained model and tokenizer
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertForSequenceClassification.from_pretrained('bert-base-uncased')
+
+# Prepare input
+text = "This movie is absolutely fantastic!"
+inputs = tokenizer(text, return_tensors="pt", padding=True, truncation=True)
+
+# Make prediction
+outputs = model(**inputs)
+predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
+print(f"Predictions: {predictions}")
+</pre></code>
+                    </div>
+                </section>
+
+                <section id="applications" class="section">
+                    <h2>Real-World Applications</h2>
+                    
+                    <h3>Business Applications</h3>
+                    <ul>
+                        <li><strong>Chatbots & Virtual Assistants:</strong> Customer service automation</li>
+                        <li><strong>Email Filtering:</strong> Spam detection and categorization</li>
+                        <li><strong>Content Recommendation:</strong> Personalized content suggestions</li>
+                        <li><strong>Document Summarization:</strong> Automatic summary generation</li>
+                    </ul>
+                    
+                    <h3>Healthcare</h3>
+                    <ul>
+                        <li>Medical record analysis</li>
+                        <li>Clinical decision support</li>
+                        <li>Drug interaction detection</li>
+                    </ul>
+                    
+                    <h3>Social Media</h3>
+                    <ul>
+                        <li>Sentiment analysis for brand monitoring</li>
+                        <li>Fake news detection</li>
+                        <li>Trend analysis</li>
+                    </ul>
+                </section>
+
+                <section id="tools" class="section">
+                    <h2>Popular NLP Libraries</h2>
+                    
+                    <div class="technique-grid">
+                        <div class="technique-card">
+                            <h4>NLTK</h4>
+                            <p>Comprehensive toolkit for classical NLP</p>
+                        </div>
+                        <div class="technique-card">
+                            <h4>spaCy</h4>
+                            <p>Industrial-strength NLP library</p>
+                        </div>
+                        <div class="technique-card">
+                            <h4>Transformers (Hugging Face)</h4>
+                            <p>State-of-the-art transformer models</p>
+                        </div>
+                        <div class="technique-card">
+                            <h4>Gensim</h4>
+                            <p>Topic modeling and document similarity</p>
+                        </div>
+                    </div>
+
+                    <div class="code-example">
+                        <h4>Quick Start with spaCy</h4>
+                        <code><pre>
+import spacy
+
+# Load English model
+nlp = spacy.load("en_core_web_sm")
+
+# Process text
+doc = nlp("Apple is looking at buying U.K. startup for $1 billion")
+
+# Extract entities
+for ent in doc.ents:
+    print(f"{ent.text} ({ent.label_})")
+
+# Output:
+# Apple (ORG)
+# U.K. (GPE)
+# $1 billion (MONEY)
+</pre></code>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="../../js/w3schools-script.js"></script>
+    <script>
+        document.querySelectorAll('.sidebar-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                window.scrollTo({ top: target.offsetTop - 120, behavior: 'smooth' });
+                document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

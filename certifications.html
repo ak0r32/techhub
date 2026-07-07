@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications - TechLearn Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .certifications-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .certifications-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .certification-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .certification-card.data-science {
+            border-top: 4px solid var(--accent-data);
+        }
+        
+        .certification-card.cybersecurity {
+            border-top: 4px solid var(--accent-cyber);
+        }
+        
+        .certification-header {
+            padding: 30px;
+            text-align: center;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .certification-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .certification-card.data-science .certification-icon {
+            color: var(--accent-data);
+        }
+        
+        .certification-card.cybersecurity .certification-icon {
+            color: var(--accent-cyber);
+        }
+        
+        .certification-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .certification-level {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .level-beginner {
+            background-color: rgba(40, 167, 69, 0.1);
+            color: #28a745;
+        }
+        
+        .level-intermediate {
+            background-color: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+        }
+        
+        .level-advanced {
+            background-color: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+        }
+        
+        .certification-content {
+            padding: 30px;
+        }
+        
+        .certification-details {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .certification-details li {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .certification-details li:last-child {
+            border-bottom: none;
+        }
+        
+        .certification-details i {
+            color: var(--primary-color);
+            width: 20px;
+        }
+        
+        .certification-actions {
+            text-align: center;
+        }
+        
+        .btn-enroll {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            font-weight: 600;
+        }
+        
+        .btn-enroll:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .certification-benefits {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin: 60px 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .benefit-item {
+            text-align: center;
+            padding: 25px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .testimonials {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+            margin: 60px 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .faq-section {
+            margin: 60px 0;
+        }
+        
+        .faq-item {
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            padding: 0 20px 20px;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-section">
+                <h1 class="logo"><i class="fas fa-graduation-cap"></i> TechLearn Hub</h1>
+                <p class="tagline">Master Cybersecurity & Data Science</p>
+            </div>
+            
+            <nav class="main-nav">
+                <div class="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-dropdown">
+                        <a href="#"><i class="fas fa-database"></i> Data Science <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content data-science-dropdown">
+                            <div class="dropdown-grid">
+                                <div class="dropdown-section">
+                                    <h4>Python & Fundamentals</h4>
+                                    <a href="content/datascience/python.html">Python Programming</a>
+                                    <a href="content/datascience/sql.html">SQL & Databases</a>
+                                    <a href="content/datascience/fastapi.html">Fast API</a>
+                                    <a href="content/datascience/math.html">Mathematics for DS</a>
+                                </div>
+                                <div class="dropdown-section">
+                                    <h4>Machine Learning</h4>
+                                    <a href="content/datascience/ml.html">ML Fundamentals</a>
+                                    <a href="content/datascience/scikit.html">Scikit-Learn</a>
+                                    <a href="content/datascience/automl.html">AutoML</a>
+                                    <a href="content/datascience/mlops.html">MLOps</a>
+                                </div>
+                                <div class="dropdown-section">
+                                    <h4>Deep Learning</h4>
+                                    <a href="content/datascience/dl.html">Deep Learning</a>
+                                    <a href="content/datascience/pytorch.html">PyTorch</a>
+                                    <a href="content/datascience/tensorflow.html">TensorFlow</a>
+                                    <a href="content/datascience/cnn.html">Computer Vision</a>
+                                </div>
+                                <div class="dropdown-section">
+                                    <h4>Advanced Topics</h4>
+                                    <a href="content/datascience/nlp.html">NLP</a>
+                                    <a href="content/datascience/transformers.html">Transformers</a>
+                                    <a href="content/datascience/rl.html">Reinforcement Learning</a>
+                                    <a href="content/datascience/langchain.html">LangChain</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-dropdown">
+                        <a href="#"><i class="fas fa-shield-alt"></i> Cybersecurity <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content cybersecurity-dropdown">
+                            <div class="dropdown-grid">
+                                <div class="dropdown-section">
+                                    <h4>Fundamentals</h4>
+                                    <a href="content/cybersecurity/fundamentals.html">Cyber Fundamentals</a>
+                                    <a href="content/cybersecurity/network.html">Network Security</a>
+                                    <a href="content/cybersecurity/cryptography.html">Cryptography</a>
+                                    <a href="content/cybersecurity/ethics.html">Ethical Hacking</a>
+                                </div>
+                                <div class="dropdown-section">
+                                    <h4>Defensive Security</h4>
+                                    <a href="content/cybersecurity/soc.html">SOC Operations</a>
+                                    <a href="content/cybersecurity/incident.html">Incident Response</a>
+                                    <a href="content/cybersecurity/forensics.html">Digital Forensics</a>
+                                    <a href="content/cybersecurity/siem.html">SIEM Tools</a>
+                                </div>
+                                <div class="dropdown-section">
+                                    <h4>Offensive Security</h4>
+                                    <a href="content/cybersecurity/pentest.html">Penetration Testing</a>
+                                    <a href="content/cybersecurity/webapp.html">Web App Security</a>
+                                    <a href="content/cybersecurity/mobile.html">Mobile Security</a>
+                                    <a href="content/cybersecurity/cloud.html">Cloud Security</a>
+                                </div>
+                                <div class="dropdown-section">
+                                    <h4>Advanced Topics</h4>
+                                    <a href="content/cybersecurity/malware.html">Malware Analysis</a>
+                                    <a href="content/cybersecurity/threat.html">Threat Intelligence</a>
+                                    <a href="content/cybersecurity/iot.html">IoT Security</a>
+                                    <a href="content/cybersecurity/compliance.html">Compliance</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="cybersecurity.html"><i class="fas fa-shield-alt"></i> Cybersecurity</a></li>
+                    <li><a href="tutorials.html"><i class="fas fa-book"></i> Tutorials</a></li>
+                    <li><a href="exercises.html"><i class="fas fa-code"></i> Exercises</a></li>
+                    <li><a href="certifications.html" class="active"><i class="fas fa-certificate"></i> Certifications</a></li>
+                    <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                </ul>
+            </nav>
+            
+            <div class="user-actions">
+                <button class="btn btn-login"><i class="fas fa-sign-in-alt"></i> Login</button>
+                <button class="btn btn-signup"><i class="fas fa-user-plus"></i> Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Certifications Header -->
+    <div class="certifications-header">
+        <div class="certifications-container">
+            <h1 style="font-size: 2.5rem; margin-bottom: 20px;">Professional Certifications</h1>
+            <p style="font-size: 1.2rem; opacity: 0.9; max-width: 800px; margin: 0 auto;">
+                Validate your skills with industry-recognized certifications in Data Science and Cybersecurity.
+            </p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="certifications-container">
+        <!-- Data Science Certifications -->
+        <h2 style="margin: 40px 0 20px; font-size: 1.8rem;">Data Science Certifications</h2>
+        <div class="certification-grid">
+            <div class="certification-card data-science">
+                <div class="certification-header">
+                    <div class="certification-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3 class="certification-title">Python for Data Science</h3>
+                    <span class="certification-level level-beginner">Beginner</span>
+                    <p style="color: var(--gray-color); font-size: 0.9rem;">Validate your Python programming skills for data analysis</p>
+                </div>
+                <div class="certification-content">
+                    <ul class="certification-details">
+                        <li><i class="fas fa-check"></i> <strong>Duration:</strong> 40 hours</li>
+                        <li><i class="fas fa-check"></i> <strong>Prerequisites:</strong> Basic programming knowledge</li>
+                        <li><i class="fas fa-check"></i> <strong>Exam:</strong> 50 multiple-choice questions</li>
+                        <li><i class="fas fa-check"></i> <strong>Projects:</strong> 2 practical assignments</li>
+                        <li><i class="fas fa-check"></i> <strong>Validity:</strong> 2 years</li>
+                    </ul>
+                    <div class="certification-actions">
+                        <button class="btn btn-enroll">Enroll Now <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="certification-card data-science">
+                <div class="certification-header">
+                    <div class="certification-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="certification-title">Machine Learning Specialist</h3>
+                    <span class="certification-level level-intermediate">Intermediate</span>
+                    <p style="color: var(--gray-color); font-size: 0.9rem;">Master ML algorithms and model deployment</p>
+                </div>
+                <div class="certification-content">
+                    <ul class="certification-details">
+                        <li><i class="fas fa-check"></i> <strong>Duration:</strong> 60 hours</li>
+                        <li><i class="fas fa-check"></i> <strong>Prerequisites:</strong> Python & Statistics</li>
+                        <li><i class="fas fa-check"></i> <strong>Exam:</strong> Theory + Practical coding</li>
+                        <li><i class="fas fa-check"></i> <strong>Projects:</strong> 3 real-world ML projects</li>
+                        <li><i class="fas fa-check"></i> <strong>Validity:</strong> 3 years</li>
+                    </ul>
+                    <div class="certification-actions">
+                        <button class="btn btn-enroll">Enroll Now <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="certification-card data-science">
+                <div class="certification-header">
+                    <div class="certification-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="certification-title">Deep Learning Engineer</h3>
+                    <span class="certification-level level-advanced">Advanced</span>
+                    <p style="color: var(--gray-color); font-size: 0.9rem;">Advanced neural networks and AI systems</p>
+                </div>
+                <div class="certification-content">
+                    <ul class="certification-details">
+                        <li><i class="fas fa-check"></i> <strong>Duration:</strong> 80 hours</li>
+                        <li><i class="fas fa-check"></i> <strong>Prerequisites:</strong> ML Specialist certification</li>
+                        <li><i class="fas fa-check"></i> <strong>Exam:</strong> Research paper + Implementation</li>
+                        <li><i class="fas fa-check"></i> <strong>Projects:</strong> 4 advanced DL projects</li>
+                        <li><i class="fas fa-check"></i> <strong>Validity:</strong> 3 years</li>
+                    </ul>
+                    <div class="certification-actions">
+                        <button class="btn btn-enroll">Enroll Now <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Cybersecurity Certifications -->
+        <h2 style="margin: 60px 0 20px; font-size: 1.8rem;">Cybersecurity Certifications</h2>
+        <div class="certification-grid">
+            <div class="certification-card cybersecurity">
+                <div class="certification-header">
+                    <div class="certification-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="certification-title">Cybersecurity Fundamentals</h3>
+                    <span class="certification-level level-beginner">Beginner</span>
+                    <p style="color: var(--gray-color); font-size: 0.9rem;">Foundation in network security and cyber defense</p>
+                </div>
+                <div class="certification-content">
+                    <ul class="certification-details">
+                        <li><i class="fas fa-check"></i> <strong>Duration:</strong> 45 hours</li>
+                        <li><i class="fas fa-check"></i> <strong>Prerequisites:</strong> Basic IT knowledge</li>
+                        <li><i class="fas fa-check"></i> <strong>Exam:</strong> 60 multiple-choice questions</li>
+                        <li><i class="fas fa-check"></i> <strong>Labs:</strong> 10 hands-on security labs</li>
+                        <li><i class="fas fa-check"></i> <strong>Validity:</strong> 2 years</li>
+                    </ul>
+                    <div class="certification-actions">
+                        <button class="btn btn-enroll">Enroll Now <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="certification-card cybersecurity">
+                <div class="certification-header">
+                    <div class="certification-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h3 class="certification-title">Ethical Hacking Professional</h3>
+                    <span class="certification-level level-intermediate">Intermediate</span>
+                    <p style="color: var(--gray-color); font-size: 0.9rem;">Penetration testing and vulnerability assessment</p>
+                </div>
+                <div class="certification-content">
+                    <ul class="certification-details">
+                        <li><i class="fas fa-check"></i> <strong>Duration:</strong> 70 hours</li>
+                        <li><i class="fas fa-check"></i> <strong>Prerequisites:</strong> Cybersecurity Fundamentals</li>
+                        <li><i class="fas fa-check"></i> <strong>Exam:</strong> Practical penetration test</li>
+                        <li><i class="fas fa-check"></i> <strong>Labs:</strong> 15 real-world hacking scenarios</li>
+                        <li><i class="fas fa-check"></i> <strong>Validity:</strong> 3 years</li>
+                    </ul>
+                    <div class="certification-actions">
+                        <button class="btn btn-enroll">Enroll Now <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="certification-card cybersecurity">
+                <div class="certification-header">
+                    <div class="certification-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="certification-title">Security Operations Specialist</h3>
+                    <span class="certification-level level-advanced">Advanced</span>
+                    <p style="color: var(--gray-color); font-size: 0.9rem;">SOC operations and incident response</p>
+                </div>
+                <div class="certification-content">
+                    <ul class="certification-details">
+                        <li><i class="fas fa-check"></i> <strong>Duration:</strong> 85 hours</li>
+                        <li><i class="fas fa-check"></i> <strong>Prerequisites:</strong> Ethical Hacking Professional</li>
+                        <li><i class="fas fa-check"></i> <strong>Exam:</strong> Incident response simulation</li>
+                        <li><i class="fas fa-check"></i> <strong>Labs:</strong> 20 SOC simulation exercises</li>
+                        <li><i class="fas fa-check"></i> <strong>Validity:</strong> 3 years</li>
+                    </ul>
+                    <div class="certification-actions">
+                        <button class="btn btn-enroll">Enroll Now <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Benefits Section -->
+        <div class="certification-benefits">
+            <h2 style="text-align: center; margin-bottom: 10px;">Benefits of Certification</h2>
+            <p style="text-align: center; color: var(--gray-color); max-width: 800px; margin: 0 auto 30px;">
+                Our certifications are designed to validate practical skills and boost your career prospects
+            </p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Career Advancement</h3>
+                    <p>Increase job opportunities and salary potential with recognized credentials</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Skill Validation</h3>
+                    <p>Demonstrate your expertise to employers with practical, hands-on certifications</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Industry Recognition</h3>
+                    <p>Certifications recognized by tech companies and hiring managers worldwide</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Practical Focus</h3>
+                    <p>Real-world projects and scenarios ensure you gain applicable skills</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Testimonials -->
+        <div class="testimonials">
+            <div class="certifications-container">
+                <h2 style="text-align: center; margin-bottom: 10px;">Student Success Stories</h2>
+                <p style="text-align: center; color: var(--gray-color); max-width: 800px; margin: 0 auto;">
+                    See how our certifications have helped professionals advance their careers
+                </p>
+                
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "The Data Science certification program transformed my career. I went from a junior analyst to a lead data scientist in just 18 months."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">SP</div>
+                            <div>
+                                <h4 style="margin: 0;">Sarah Patel</h4>
+                                <p style="margin: 0; color: var(--gray-color); font-size: 0.9rem;">Lead Data Scientist, TechCorp</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "As a cybersecurity professional, the Ethical Hacking certification gave me the practical skills I needed to excel in penetration testing roles."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">MR</div>
+                            <div>
+                                <h4 style="margin: 0;">Mike Rodriguez</h4>
+                                <p style="margin: 0; color: var(--gray-color); font-size: 0.9rem;">Senior Penetration Tester, SecureNet</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            "The structured learning path and hands-on projects were exactly what I needed to transition into machine learning from web development."
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">JC</div>
+                            <div>
+                                <h4 style="margin: 0;">James Chen</h4>
+                                <p style="margin: 0; color: var(--gray-color); font-size: 0.9rem;">ML Engineer, DataFirst</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2 style="margin-bottom: 20px;">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is the exam format for certifications?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Exams vary by certification level. Beginner certifications typically include multiple-choice questions and basic practical exercises. Intermediate and advanced certifications include hands-on labs, coding challenges, and real-world scenario assessments. All exams are proctored online with time limits appropriate for each certification.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How long does it take to complete a certification?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Certification durations range from 40-85 hours depending on the level. Beginner certifications typically take 4-6 weeks to complete with part-time study. Intermediate certifications require 8-10 weeks, and advanced certifications may take 12-16 weeks. You can study at your own pace, and all materials are available for one year from enrollment.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Are there any prerequisites for certifications?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Beginner certifications have no prerequisites other than basic computer literacy. Intermediate certifications typically require completion of the corresponding beginner certification or equivalent knowledge. Advanced certifications require completion of intermediate certifications or demonstrated professional experience in the field. Specific prerequisites are listed on each certification page.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How are certifications renewed?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Certifications are valid for 2-3 years depending on the level. To renew, you can either retake the current exam or complete continuing education credits through our platform. We offer renewal courses that cover updated technologies and best practices. Renewal ensures your skills remain current in these fast-evolving fields.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is there a money-back guarantee?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we offer a 30-day money-back guarantee for all certification programs. If you're not satisfied with the course material within the first 30 days of enrollment, you can request a full refund. After 30 days, partial refunds may be available on a case-by-case basis. Exam fees are non-refundable once scheduled.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Call to Action -->
+        <div style="text-align: center; margin: 60px 0;">
+            <h2 style="margin-bottom: 20px;">Ready to Advance Your Career?</h2>
+            <p style="color: var(--gray-color); max-width: 600px; margin: 0 auto 30px;">
+                Join thousands of professionals who have transformed their careers with TechLearn Hub certifications.
+            </p>
+            <a href="#" class="btn" style="background-color: var(--primary-color); color: white; padding: 15px 40px; font-size: 1.1rem;">
+                <i class="fas fa-rocket"></i> Start Your Certification Journey
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>TechLearn Hub</h4>
+                    <p>Providing structured learning paths for cybersecurity and data science students since 2024.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Data Science</h4>
+                    <ul>
+                        <li><a href="content/datascience/python.html">Python Programming</a></li>
+                        <li><a href="content/datascience/ml.html">Machine Learning</a></li>
+                        <li><a href="content/datascience/dl.html">Deep Learning</a></li>
+                        <li><a href="content/datascience/nlp.html">NLP & Transformers</a></li>
+                        <li><a href="content/datascience/sql.html">SQL & Databases</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Cybersecurity</h4>
+                    <ul>
+                        <li><a href="content/cybersecurity/fundamentals.html">Cybersecurity Fundamentals</a></li>
+                        <li><a href="content/cybersecurity/network.html">Network Security</a></li>
+                        <li><a href="content/cybersecurity/cryptography.html">Cryptography</a></li>
+                        <li><a href="content/cybersecurity/ethics.html">Ethical Hacking</a></li>
+                        <li><a href="content/cybersecurity/forensics.html">Digital Forensics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="tutorials.html">Tutorials</a></li>
+                        <li><a href="exercises.html">Exercises</a></li>
+                        <li><a href="certifications.html" class="active">Certifications</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TechLearn Hub. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p>Inspired by W3Schools learning structure</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const item = this.closest('.faq-item');
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Enroll button functionality
+        document.querySelectorAll('.btn-enroll').forEach(button => {
+            button.addEventListener('click', function() {
+                const card = this.closest('.certification-card');
+                const title = card.querySelector('.certification-title').textContent;
+                const level = card.querySelector('.certification-level').textContent;
+                
+                alert(`Enrolling in: ${title} (${level})\n\nYou would be redirected to the enrollment page in a real implementation.`);
+            });
+        });
+        
+        // Smooth scroll for FAQ links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
