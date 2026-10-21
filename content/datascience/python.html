@@ -8,128 +8,153 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --techlearn-green: #14a57a;
+            --techlearn-green-dark: #0f8d68;
+            --techlearn-blue: #2c7be5;
+            --techlearn-bg: #f4f7f9;
+            --techlearn-soft: #edfdf3;
+            --techlearn-border: #e7e9eb;
+            --techlearn-text: #16324f;
+        }
+
+        * { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; }
+
         body {
-            background-color: #f7f8fa;
+            font-family: 'Poppins', sans-serif;
+            background: var(--techlearn-bg);
+            color: var(--techlearn-text);
+            padding-top: 103px;
         }
 
         .module-main {
-            padding: 24px 0 60px;
+            margin-top: 0;
+        }
+
+        .module-header {
+            background: linear-gradient(135deg, #edfdf3 0%, #f5f7ff 100%);
+            border: 1px solid #dfe9e1;
+            border-radius: 16px;
+            padding: 30px 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.04);
         }
 
         .module-breadcrumb {
             font-size: 0.9rem;
             color: #66737d;
             margin-bottom: 18px;
+            letter-spacing: 0.01em;
         }
 
         .module-breadcrumb a {
-            color: var(--w3-green);
+            color: var(--techlearn-green);
             text-decoration: none;
-        }
-
-        .module-header {
-            background: linear-gradient(135deg, #eefaf2 0%, #f5f8ff 100%);
-            border: 1px solid #dfe9e1;
-            border-radius: 12px;
-            padding: 28px;
-            margin-bottom: 24px;
+            font-weight: 600;
         }
 
         .module-header h1 {
             margin: 0;
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--w3-text);
+            font-size: clamp(2.1rem, 4vw, 3.1rem);
+            line-height: 1.1;
+            color: var(--techlearn-text);
+            letter-spacing: -0.04em;
         }
 
         .module-header p {
-            margin: 10px 0 0;
+            margin: 12px 0 0;
             font-size: 1.08rem;
-            color: #56636d;
+            color: #53606a;
         }
 
         .module-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 14px;
-            margin-top: 18px;
+            gap: 12px;
+            margin-top: 20px;
         }
 
         .module-meta span {
-            background: #fff;
-            border: 1px solid #e5e7eb;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid #dfe7ed;
             border-radius: 999px;
-            padding: 8px 12px;
-            font-size: 0.85rem;
-            color: var(--w3-text);
+            padding: 8px 14px;
+            font-size: 0.82rem;
+            color: var(--techlearn-text);
             display: inline-flex;
             align-items: center;
             gap: 8px;
-        }
-
-        .lesson-page {
-            background: transparent;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
         }
 
         .content-area {
-            background: #fff;
+            background: #ffffff;
             border: 1px solid #e5e7eb;
-            border-radius: 12px;
-            padding: 32px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border-radius: 16px;
+            padding: 32px 34px;
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04);
         }
 
         .lesson-title {
-            font-size: 2rem;
+            font-size: clamp(1.8rem, 2.5vw, 2.3rem);
             margin-bottom: 18px;
-            color: var(--w3-text);
+            color: var(--techlearn-text);
+            font-weight: 700;
         }
 
         .lesson-content {
             line-height: 1.8;
-            color: #3b4750;
+            color: #37414a;
+            font-size: 1rem;
         }
 
+        .lesson-content p { margin: 0 0 16px; }
         .lesson-content h3 {
-            color: var(--w3-text);
-            margin: 26px 0 12px;
+            color: var(--techlearn-text);
+            margin: 28px 0 12px;
             font-size: 1.45rem;
+            font-weight: 700;
         }
-
-        .lesson-content ul,
-        .lesson-content ol {
-            padding-left: 22px;
+        .lesson-content ul, .lesson-content ol {
+            padding-left: 24px;
             margin: 14px 0 18px;
         }
+        .lesson-content li { margin-bottom: 8px; }
 
         .code-block {
-            background: #f6f7f8;
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
+            background: #f7f8fa;
+            border: 1px solid #e4e8eb;
+            border-radius: 12px;
             padding: 18px 20px;
             margin: 20px 0;
             overflow-x: auto;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
         }
 
         .code-block pre {
             margin: 0;
             white-space: pre-wrap;
-            font-family: "Consolas", "Courier New", monospace;
+            font-family: 'Consolas', 'Courier New', monospace;
             color: #1f2937;
             font-size: 0.94rem;
+            line-height: 1.6;
         }
 
         .exercise {
-            background: #f4faf6;
-            border-left: 4px solid var(--w3-green);
-            border-radius: 8px;
+            background: linear-gradient(135deg, #f3fbf6 0%, #f8fbff 100%);
+            border-left: 4px solid var(--techlearn-green);
+            border-radius: 12px;
             padding: 18px 20px;
-            margin: 24px 0;
+            margin: 26px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
 
         .exercise-title {
             font-weight: 700;
             margin-bottom: 8px;
             color: #0b5f3d;
+            font-size: 1.05rem;
         }
 
         .navigation-buttons {
@@ -142,46 +167,32 @@
             border-top: 1px solid #edf0f2;
         }
 
-        .w3-right-card.small {
-            padding: 18px 20px;
-        }
-
-        .w3-right-card h4 {
-            margin-bottom: 14px;
-        }
-
         .course-list {
             list-style: none;
             padding: 0;
             margin: 0;
         }
-
-        .course-list li {
-            margin: 8px 0;
-        }
-
+        .course-list li { margin: 6px 0; }
         .course-list a {
-            color: var(--w3-text);
+            color: var(--techlearn-text);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 8px;
             padding: 8px 0;
+            border-radius: 6px;
+            transition: all 0.2s ease;
         }
-
         .course-list a:hover {
-            color: var(--w3-green);
+            color: var(--techlearn-green);
+            background: #f7f8fa;
+            padding-left: 8px;
         }
 
         @media (max-width: 768px) {
-            .content-area {
-                padding: 22px 18px;
-            }
-
-            .navigation-buttons {
-                flex-direction: column;
-                align-items: stretch;
-            }
+            .content-area { padding: 22px 18px; }
+            .navigation-buttons { flex-direction: column; align-items: stretch; }
+            .module-header { padding: 22px 20px; }
         }
     </style>
 </head>
@@ -241,7 +252,7 @@
 
     <div class="w3-tech-nav">
         <div class="w3-tech-bar">
-            <a href="python.html" class="w3-tech-item"><i class="fab fa-python"></i> PYTHON</a>
+            <a href="python.html" class="w3-tech-item active"><i class="fab fa-python"></i> PYTHON</a>
             <a href="ml.html" class="w3-tech-item"><i class="fas fa-brain"></i> MACHINE LEARNING</a>
             <a href="dl.html" class="w3-tech-item"><i class="fas fa-layer-group"></i> DEEP LEARNING</a>
             <a href="nlp.html" class="w3-tech-item"><i class="fas fa-language"></i> NLP</a>
@@ -285,7 +296,7 @@
             </div>
         </div>
 
-        <div class="w3-main-content lesson-page">
+        <div class="w3-main-content">
             <div class="module-header">
                 <div class="module-breadcrumb">
                     <a href="../../index-w3style.html">Home</a> / <a href="../../tutorials.html">Data Science</a> / <span>Python Programming</span>
