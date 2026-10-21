@@ -164,3 +164,123 @@ This project is created for educational purposes. Feel free to use, modify, and 
 ## Contact
 
 Project created as a learning platform demonstration. For educational use only.
+
+
+## Security Implementation
+
+The platform now includes a comprehensive security system with role-based access control:
+
+### Security Features Implemented
+
+#### 1. Authentication & Authorization
+- **JWT-based authentication** with 7-day token expiration
+- **Role-based access control** (Admin, User, Public)
+- **Password hashing** using bcrypt with salt rounds
+- **Protected API endpoints** with middleware validation
+
+#### 2. User Roles & Permissions
+- **Administrators**: Full access to upload, edit, delete content, manage users
+- **Registered Users**: View content, upload personal content, manage own content
+- **Public Visitors**: View content, register accounts
+
+#### 3. Content Management Security
+- **Admin-only content upload** endpoints
+- **User-specific content management** for personal uploads
+- **File type validation** (HTML only)
+- **File size limits** (10MB maximum)
+
+#### 4. Frontend Security Features
+- **Secure login/signup modals**
+- **Dynamic UI updates** based on user role
+- **Admin dashboard** for content and user management
+- **User content portal** for personal content management
+
+### Quick Start with Security
+
+1. **Install dependencies**:
+   ```bash
+   npm install bcryptjs jsonwebtoken express-session cookie-parser multer
+   ```
+
+2. **Start the secure server**:
+   ```bash
+   node server-updated.js
+   ```
+
+3. **Access the system**:
+   - Main site: `http://localhost:3000`
+   - Admin dashboard: `http://localhost:3000/admin.html`
+   - User content: `http://localhost:3000/user-content.html`
+
+4. **Default Admin Credentials**:
+   - Username: `admin`
+   - Password: `admin123` (change immediately on first login)
+
+### API Security Endpoints
+
+#### Authentication
+- `POST /api/auth/register` - Register new user
+- `POST /api/auth/login` - User login
+- `POST /api/auth/logout` - User logout
+- `GET /api/auth/me` - Get current user info
+
+#### Admin Endpoints (Admin only)
+- `GET /api/admin/dashboard` - Dashboard statistics
+- `GET /api/admin/users` - List all users
+- `PUT /api/admin/users/:id/role` - Update user role
+- `POST /api/admin/content/:category/upload` - Upload content
+
+#### User Endpoints (Authenticated users)
+- `GET /api/user/content` - Get user's content
+- `POST /api/user/content/:category/upload` - Upload personal content
+- `PUT /api/user/content/:id` - Update user's content
+- `DELETE /api/user/content/:id` - Delete user's content
+
+### Security Testing
+
+Run the security test suite:
+```bash
+node test-security.js
+```
+
+### Security Documentation
+
+For detailed security documentation, see:
+- `SECURITY_IMPLEMENTATION.md` - Complete security system documentation
+- `admin.html` - Admin dashboard interface
+- `user-content.html` - User content management portal
+- `js/auth.js` - Frontend authentication module
+- `auth.js` - Backend authentication middleware
+- `database.js` - Secure database layer
+
+### Key Security Files
+
+```
+security/
+├── server-updated.js      # Enhanced server with security middleware
+├── auth.js               # Authentication & authorization
+├── database.js           # Secure data storage
+├── js/auth.js           # Frontend authentication
+├── admin.html           # Admin dashboard
+├── user-content.html    # User content portal
+├── test-security.js     # Security test suite
+└── SECURITY_IMPLEMENTATION.md # Documentation
+```
+
+### Security Best Practices
+
+1. **Always change default admin password** after first login
+2. **Use strong passwords** for all accounts
+3. **Regularly audit user accounts** and content
+4. **Monitor access logs** for suspicious activity
+5. **Keep dependencies updated** for security patches
+
+### Production Deployment Considerations
+
+1. **Enable HTTPS** with SSL certificates
+2. **Set proper environment variables** for secrets
+3. **Implement rate limiting** for API endpoints
+4. **Add logging and monitoring** for security events
+5. **Regular security audits** and penetration testing
+
+For complete security implementation details, refer to `SECURITY_IMPLEMENTATION.md`.

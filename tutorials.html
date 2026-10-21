@@ -246,7 +246,7 @@
                     <li><a href="exercises.html"><i class="fas fa-code"></i> Exercises</a></li>
                     <li><a href="certifications.html"><i class="fas fa-certificate"></i> Certifications</a></li>
                     <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
-                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="index-w3style.html"><i class="fas fa-home"></i> Home</a></li>
                 </ul>
             </nav>
             
@@ -534,5 +534,42 @@
             }
         });
     </script>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Initialize authentication when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.authManager) {
+                window.authManager.updateUI();
+                
+                // Add click handlers for auth buttons
+                const loginBtn = document.querySelector('.btn-login');
+                const signupBtn = document.querySelector('.btn-signup');
+                
+                if (loginBtn) {
+                    loginBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (window.authManager.isAuthenticated()) {
+                            window.authManager.showUserMenu();
+                        } else {
+                            window.authManager.showLoginModal();
+                        }
+                    });
+                }
+                
+                if (signupBtn) {
+                    signupBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (window.authManager.isAuthenticated()) {
+                            window.authManager.logout();
+                        } else {
+                            window.authManager.showSignupModal();
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+
 </body>
 </html>

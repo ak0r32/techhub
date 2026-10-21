@@ -3,7 +3,7 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
@@ -56,6 +56,93 @@ app.get('/api/content', (req, res) => {
   };
   
   res.json(content);
+});
+
+// API endpoint to search content
+app.get('/api/search', (req, res) => {
+  const query = req.query.q || '';
+  const category = req.query.category || 'all';
+  
+  if (!query) {
+    return res.status(400).json({ error: 'Search query is required' });
+  }
+
+  const allContent = {
+    datascience: [
+      { id: 'python', title: 'Python Programming', description: 'Learn Python programming with focus on data science applications', category: 'datascience', path: 'content/datascience/python.html', tags: ['python', 'programming', 'data science', 'basics'] },
+      { id: 'ml', title: 'Machine Learning', description: 'Master ML algorithms and build predictive models', category: 'datascience', path: 'content/datascience/ml.html', tags: ['machine learning', 'algorithms', 'models', 'predictions'] },
+      { id: 'dl', title: 'Deep Learning', description: 'Deep neural networks and advanced learning techniques', category: 'datascience', path: 'content/datascience/dl.html', tags: ['deep learning', 'neural networks', 'ai', 'advanced'] },
+      { id: 'nlp', title: 'Natural Language Processing', description: 'Processing and analyzing human language data', category: 'datascience', path: 'content/datascience/nlp.html', tags: ['nlp', 'text processing', 'language', 'ai'] },
+      { id: 'sql', title: 'SQL & Databases', description: 'Database design, querying, and management', category: 'datascience', path: 'content/datascience/sql.html', tags: ['sql', 'databases', 'data management', 'queries'] },
+      { id: 'fastapi', title: 'FastAPI', description: 'Building modern APIs with FastAPI framework', category: 'datascience', path: 'content/datascience/fastapi.html', tags: ['fastapi', 'api', 'web development', 'python'] },
+      { id: 'pytorch', title: 'PyTorch', description: 'Deep learning framework PyTorch for neural networks', category: 'datascience', path: 'content/datascience/pytorch.html', tags: ['pytorch', 'deep learning', 'neural networks', 'framework'] },
+      { id: 'tensorflow', title: 'TensorFlow', description: 'TensorFlow library for machine learning and deep learning', category: 'datascience', path: 'content/datascience/tensorflow.html', tags: ['tensorflow', 'deep learning', 'machine learning', 'framework'] },
+      { id: 'transformers', title: 'Transformers', description: 'Transformer models and attention mechanisms', category: 'datascience', path: 'content/datascience/transformers.html', tags: ['transformers', 'bert', 'gpt', 'nlp', 'ai'] },
+      { id: 'rl', title: 'Reinforcement Learning', description: 'Learning through rewards and agent interactions', category: 'datascience', path: 'content/datascience/rl.html', tags: ['reinforcement learning', 'agents', 'rewards', 'ai'] },
+      { id: 'scikit', title: 'Scikit-Learn', description: 'Machine learning library for Python', category: 'datascience', path: 'content/datascience/scikit.html', tags: ['scikit-learn', 'machine learning', 'python', 'algorithms'] },
+      { id: 'automl', title: 'AutoML', description: 'Automated machine learning and hyperparameter tuning', category: 'datascience', path: 'content/datascience/automl.html', tags: ['automl', 'machine learning', 'automation', 'tuning'] },
+      { id: 'mlops', title: 'MLOps', description: 'Machine learning operations and deployment', category: 'datascience', path: 'content/datascience/mlops.html', tags: ['mlops', 'deployment', 'operations', 'machine learning'] },
+      { id: 'cnn', title: 'Computer Vision', description: 'Image recognition and computer vision techniques', category: 'datascience', path: 'content/datascience/cnn.html', tags: ['computer vision', 'cnn', 'image recognition', 'deep learning'] },
+      { id: 'langchain', title: 'LangChain', description: 'Building LLM applications with LangChain', category: 'datascience', path: 'content/datascience/langchain.html', tags: ['langchain', 'llm', 'ai', 'gpt', 'nlp'] },
+      { id: 'math', title: 'Mathematics for DS', description: 'Mathematical foundations for data science', category: 'datascience', path: 'content/datascience/math.html', tags: ['mathematics', 'linear algebra', 'calculus', 'statistics'] }
+    ],
+    cybersecurity: [
+      { id: 'fundamentals', title: 'Cybersecurity Fundamentals', description: 'Understand security fundamentals and best practices', category: 'cybersecurity', path: 'content/cybersecurity/fundamentals.html', tags: ['cybersecurity', 'fundamentals', 'basics', 'security'] },
+      { id: 'network', title: 'Network Security', description: 'Protecting networks from attacks and vulnerabilities', category: 'cybersecurity', path: 'content/cybersecurity/network.html', tags: ['network security', 'firewalls', 'protocols', 'defense'] },
+      { id: 'cryptography', title: 'Cryptography', description: 'Encryption, decryption, and cryptographic techniques', category: 'cybersecurity', path: 'content/cybersecurity/cryptography.html', tags: ['cryptography', 'encryption', 'security', 'algorithms'] },
+      { id: 'ethics', title: 'Ethical Hacking', description: 'Penetration testing and ethical hacking practices', category: 'cybersecurity', path: 'content/cybersecurity/ethics.html', tags: ['ethical hacking', 'penetration testing', 'security', 'testing'] },
+      { id: 'forensics', title: 'Digital Forensics', description: 'Investigation and analysis of digital crimes', category: 'cybersecurity', path: 'content/cybersecurity/forensics.html', tags: ['digital forensics', 'investigation', 'analysis', 'crime'] },
+      { id: 'incident', title: 'Incident Response', description: 'Responding to and managing security incidents', category: 'cybersecurity', path: 'content/cybersecurity/incident.html', tags: ['incident response', 'security', 'management', 'defense'] },
+      { id: 'malware', title: 'Malware Analysis', description: 'Analyzing and understanding malware behavior', category: 'cybersecurity', path: 'content/cybersecurity/malware.html', tags: ['malware', 'analysis', 'reverse engineering', 'security'] },
+      { id: 'soc', title: 'SOC Operations', description: 'Security Operations Center management', category: 'cybersecurity', path: 'content/cybersecurity/soc.html', tags: ['soc', 'operations', 'monitoring', 'security'] },
+      { id: 'siem', title: 'SIEM Tools', description: 'Security Information and Event Management tools', category: 'cybersecurity', path: 'content/cybersecurity/siem.html', tags: ['siem', 'tools', 'monitoring', 'events'] },
+      { id: 'pentest', title: 'Penetration Testing', description: 'Testing security by simulating attacks', category: 'cybersecurity', path: 'content/cybersecurity/pentest.html', tags: ['penetration testing', 'testing', 'security', 'attacks'] },
+      { id: 'webapp', title: 'Web App Security', description: 'Securing web applications from vulnerabilities', category: 'cybersecurity', path: 'content/cybersecurity/webapp.html', tags: ['web security', 'owasp', 'vulnerabilities', 'protection'] },
+      { id: 'mobile', title: 'Mobile Security', description: 'Mobile device and app security practices', category: 'cybersecurity', path: 'content/cybersecurity/mobile.html', tags: ['mobile security', 'apps', 'devices', 'protection'] },
+      { id: 'cloud', title: 'Cloud Security', description: 'Securing cloud infrastructure and services', category: 'cybersecurity', path: 'content/cybersecurity/cloud.html', tags: ['cloud security', 'aws', 'azure', 'infrastructure'] },
+      { id: 'threat', title: 'Threat Intelligence', description: 'Understanding and analyzing security threats', category: 'cybersecurity', path: 'content/cybersecurity/threat.html', tags: ['threat intelligence', 'threats', 'analysis', 'defense'] },
+      { id: 'iot', title: 'IoT Security', description: 'Securing Internet of Things devices', category: 'cybersecurity', path: 'content/cybersecurity/iot.html', tags: ['iot security', 'devices', 'networks', 'protection'] },
+      { id: 'compliance', title: 'Compliance', description: 'Security compliance and regulations', category: 'cybersecurity', path: 'content/cybersecurity/compliance.html', tags: ['compliance', 'gdpr', 'regulations', 'standards'] },
+      { id: 'rodemap', title: 'Roadmap', description: 'Cybersecurity learning roadmap', category: 'cybersecurity', path: 'content/cybersecurity/Rodemap.html', tags: ['roadmap', 'learning path', 'guide', 'cybersecurity'] }
+    ]
+  };
+
+  const queryLower = query.toLowerCase();
+  let results = [];
+
+  // Get content based on category filter
+  const contentToSearch = category === 'all' ? 
+    [...allContent.datascience, ...allContent.cybersecurity] :
+    allContent[category] || [];
+
+  // Search through content
+  results = contentToSearch.filter(item => {
+    const titleMatch = item.title.toLowerCase().includes(queryLower);
+    const descriptionMatch = item.description.toLowerCase().includes(queryLower);
+    const tagsMatch = item.tags.some(tag => tag.toLowerCase().includes(queryLower));
+    return titleMatch || descriptionMatch || tagsMatch;
+  });
+
+  // Sort results by relevance
+  results.sort((a, b) => {
+    const aTitle = a.title.toLowerCase();
+    const bTitle = b.title.toLowerCase();
+    
+    if (aTitle === queryLower) return -1;
+    if (bTitle === queryLower) return 1;
+    
+    if (aTitle.startsWith(queryLower) && !bTitle.startsWith(queryLower)) return -1;
+    if (!aTitle.startsWith(queryLower) && bTitle.startsWith(queryLower)) return 1;
+    
+    return 0;
+  });
+
+  res.json({
+    query: query,
+    category: category,
+    total: results.length,
+    results: results
+  });
 });
 
 // API endpoint to get content by category
@@ -178,8 +265,8 @@ app.get('/certifications', (req, res) => {
   res.sendFile(path.join(__dirname, 'certifications.html'));
 });
 
-app.get('/faq', (req, res) => {
-  res.sendFile(path.join(__dirname, 'faq.html'));
+app.get('/search', (req, res) => {
+  res.sendFile(path.join(__dirname, 'search.html'));
 });
 
 app.get('/cybersecurity', (req, res) => {

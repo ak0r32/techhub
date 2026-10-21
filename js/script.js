@@ -289,3 +289,54 @@ function initializePageFeatures() {
 
 // Initialize when page loads
 window.addEventListener('load', initializePageFeatures);
+
+
+// Authentication integration
+const loginBtn = document.querySelector('.btn-login');
+const signupBtn = document.querySelector('.btn-signup');
+
+if (loginBtn) {
+    loginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (window.authManager && window.authManager.isAuthenticated()) {
+            window.authManager.showUserMenu();
+        } else {
+            window.authManager.showLoginModal();
+        }
+    });
+}
+
+if (signupBtn) {
+    signupBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (window.authManager && window.authManager.isAuthenticated()) {
+            window.authManager.logout();
+        } else {
+            window.authManager.showSignupModal();
+        }
+    });
+}
+
+// Add logout button styles
+const logoutStyle = document.createElement('style');
+logoutStyle.textContent = `
+    .btn.logged-in {
+        background-color: #4A6FA5;
+        color: white;
+        cursor: pointer;
+    }
+    
+    .btn.logged-in:hover {
+        background-color: #3a5a85;
+    }
+    
+    .btn.btn-logout {
+        background-color: #dc3545;
+        color: white;
+    }
+    
+    .btn.btn-logout:hover {
+        background-color: #c82333;
+    }
+`;
+document.head.appendChild(logoutStyle);

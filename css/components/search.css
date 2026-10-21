@@ -1,0 +1,368 @@
+/* Search Component Styles */
+
+/* Search Bar */
+.w3-search {
+    flex: 0 1 250px;
+    display: flex;
+    align-items: center;
+}
+
+.w3-input-search {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+}
+
+.w3-input-search:focus {
+    border-color: #4CAF50;
+    background: white;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
+}
+
+.w3-button-search {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    transition: background 0.3s ease;
+    margin-left: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.w3-button-search:hover {
+    background: #45a049;
+}
+
+.w3-button-search:active {
+    background: #3d8b40;
+}
+
+/* Autocomplete Container */
+.w3-autocomplete-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: -12px;
+    background: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 1000;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.w3-autocomplete-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+}
+
+.w3-autocomplete-item:last-child {
+    border-bottom: none;
+}
+
+.w3-autocomplete-item:hover {
+    background: #f5f5f5;
+    padding-left: 20px;
+}
+
+.w3-autocomplete-item i {
+    color: #999;
+    flex-shrink: 0;
+    width: 16px;
+    text-align: center;
+}
+
+.w3-autocomplete-item span {
+    flex: 1;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.w3-autocomplete-item strong {
+    color: #4CAF50;
+    font-weight: 600;
+}
+
+.w3-autocomplete-category {
+    font-size: 0.75rem;
+    color: #999;
+    background: #f0f0f0;
+    padding: 2px 6px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+/* Search Results Page Styles */
+.w3-search-page {
+    min-height: 100vh;
+}
+
+.w3-no-results {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.w3-no-results i {
+    font-size: 4rem;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.w3-no-results h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.w3-no-results p {
+    color: #999;
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .w3-search {
+        flex: 1;
+        min-width: 150px;
+    }
+
+    .w3-input-search {
+        font-size: 0.85rem;
+        padding: 6px 8px;
+    }
+
+    .w3-button-search {
+        padding: 6px 8px;
+    }
+
+    .w3-autocomplete-container {
+        right: 0;
+        left: auto;
+        min-width: 250px;
+    }
+
+    .w3-autocomplete-item {
+        padding: 10px 12px;
+    }
+
+    .w3-autocomplete-item:hover {
+        padding-left: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .w3-search {
+        flex: 0 1 200px;
+    }
+
+    .w3-input-search {
+        font-size: 0.8rem;
+    }
+
+    .w3-button-search {
+        padding: 6px 10px;
+    }
+
+    .w3-button-search i {
+        font-size: 0.9rem;
+    }
+
+    .w3-autocomplete-category {
+        display: none;
+    }
+
+    .w3-autocomplete-container {
+        min-width: 200px;
+        max-height: 300px;
+    }
+}
+
+/* Loading State */
+.w3-search-loading {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: #4CAF50;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+    margin: 0 2px;
+}
+
+.w3-search-loading:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.w3-search-loading:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes pulse {
+    0%, 60%, 100% {
+        opacity: 0.3;
+    }
+    30% {
+        opacity: 1;
+    }
+}
+
+/* Highlight Search Term in Results */
+.w3-search-highlight {
+    background: yellow;
+    padding: 2px 4px;
+    font-weight: 600;
+}
+
+/* Search Suggestions */
+.w3-search-suggestions {
+    background: #f0f8f5;
+    border-left: 4px solid #4CAF50;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+.w3-search-suggestions h4 {
+    margin-top: 0;
+    color: #4CAF50;
+}
+
+.w3-search-suggestions ul {
+    margin: 10px 0 0 0;
+    padding-left: 20px;
+    list-style: none;
+}
+
+.w3-search-suggestions li {
+    margin: 5px 0;
+    color: #666;
+}
+
+.w3-search-suggestions li:before {
+    content: "→ ";
+    margin-right: 8px;
+    color: #4CAF50;
+}
+
+/* Search Filter */
+.w3-search-filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.w3-filter-btn {
+    padding: 8px 16px;
+    border: 2px solid #ddd;
+    background: white;
+    color: #333;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.w3-filter-btn:hover {
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+.w3-filter-btn.active {
+    background: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+}
+
+/* Search Analytics (for future use) */
+.w3-search-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    color: #999;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #eee;
+}
+
+.w3-search-time {
+    color: #999;
+    font-size: 0.8rem;
+}
+
+/* Trending Searches */
+.w3-trending-searches {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.w3-trending-searches h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.w3-trending-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.w3-trending-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.w3-trending-list li:last-child {
+    border-bottom: none;
+}
+
+.w3-trending-list a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.w3-trending-list a:hover {
+    text-decoration: underline;
+}
+
+.w3-trending-rank {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #4CAF50;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-right: 8px;
+}

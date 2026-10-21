@@ -67,12 +67,14 @@
             
             <!-- Right Side Navigation -->
             <div class="w3-bar-right">
-                <a href="faq.html" class="w3-bar-item w3-button w3-hide-small">Spaces</a>
+                <a href="#" class="w3-bar-item w3-button w3-hide-small">Spaces</a>
                 <a href="#" class="w3-bar-item w3-button w3-hide-small">Academy</a>
                 <a href="#" class="w3-bar-item w3-button w3-hide-small w3-white">Upgrade</a>
                 <a href="certifications.html" class="w3-bar-item w3-button w3-hide-small w3-cert-btn">Get Certified</a>
+                <button class="w3-bar-item w3-button w3-hide-small btn-upload" onclick="openUploadModal()"><i class="fas fa-cloud-upload-alt"></i> Upload</button>
                 <a href="index-w3style.html" class="w3-bar-item w3-button w3-hide-small"><i class="fas fa-home"></i></a>
-                <button class="w3-bar-item w3-button w3-hide-small"><i class="fas fa-sign-in-alt"></i> Log in</button>
+                <button class="w3-bar-item w3-button w3-hide-small btn-login" onclick="openLoginModal()"><i class="fas fa-sign-in-alt"></i> Log in</button>
+                <button class="w3-bar-item w3-button w3-hide-small btn-signup w3-white" onclick="openSignupModal()"><i class="fas fa-user-plus"></i> Sign Up</button>
             </div>
         </div>
     </div>
@@ -296,34 +298,33 @@
                 </div>
             </div>
             
-            <!-- Get Certified -->
+            <!-- Learning Tracks -->
             <div class="w3-section w3-certified-section">
                 <div class="w3-certified-content">
-                    <h2><i class="fas fa-certificate"></i> Get Certified</h2>
-                    <p>Validate your skills with industry-recognized certifications</p>
+                    <h2><i class="fas fa-route"></i> Learning Tracks</h2>
+                    <p>Explore structured paths across data science, cybersecurity, and practical project work.</p>
                     <a href="certifications.html" class="w3-btn w3-btn-cert">
-                        View Certifications <i class="fas fa-arrow-right"></i>
+                        Browse Courses <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
                 <div class="w3-certified-image">
-                    <i class="fas fa-award"></i>
+                    <i class="fas fa-graduation-cap"></i>
                 </div>
             </div>
         </div>
         
         <!-- RIGHT SIDEBAR -->
         <div class="w3-sidebar-right">
-            <!-- Get Certified Card -->
+            <!-- Learning Track Card -->
             <div class="w3-right-card w3-cert-card">
-                <div class="w3-cert-badge">COURSES STARTING AT $14.99</div>
-                <h3>Get Certified.</h3>
-                <h3>Get Hired.</h3>
+                <div class="w3-cert-badge">LEARNING TRACKS</div>
+                <h3>Build your skills</h3>
                 <div class="w3-cert-image">
-                    <i class="fas fa-certificate"></i>
-                    <p>CERTIFICATE OF COMPLETION</p>
+                    <i class="fas fa-route"></i>
+                    <p>STRUCTURED LEARNING</p>
                 </div>
-                <h4>CERTIFIED DEVELOPERS</h4>
-                <a href="certifications.html" class="w3-btn w3-btn-cert-full">Learn more</a>
+                <h4>Explore practical courses</h4>
+                <a href="certifications.html" class="w3-btn w3-btn-cert-full">View programs</a>
             </div>
             
             <!-- Upgrade Card -->
@@ -385,7 +386,7 @@
                     <a href="#">Security Examples</a>
                 </div>
                 <div class="w3-footer-col">
-                    <h4>Get Certified</h4>
+                    <h4>Certificates</h4>
                     <a href="certifications.html">Python Certification</a>
                     <a href="certifications.html">ML Certification</a>
                     <a href="certifications.html">Security Certification</a>
@@ -409,5 +410,203 @@
     
     <script src="js/w3schools-script.js"></script>
     <script src="js/api-redirect.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/search.js"></script>
+    
+    <!-- Login Modal -->
+    <div id="loginModal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);">
+        <div style="background-color:#fff; margin:10% auto; padding:30px; border-radius:10px; width:90%; max-width:400px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <span onclick="closeLoginModal()" style="color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>
+            <h2 style="color:#333; margin-bottom:20px;">Login</h2>
+            <form onsubmit="handleLogin(event)">
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; margin-bottom:5px; color:#666;">Email:</label>
+                    <input type="email" id="loginEmail" required style="width:100%; padding:10px; border:1px solid #ddd; border-radius:5px; box-sizing:border-box;">
+                </div>
+                <div style="margin-bottom:20px;">
+                    <label style="display:block; margin-bottom:5px; color:#666;">Password:</label>
+                    <input type="password" id="loginPassword" required style="width:100%; padding:10px; border:1px solid #ddd; border-radius:5px; box-sizing:border-box;">
+                </div>
+                <button type="submit" style="width:100%; padding:12px; background:#4CAF50; color:white; border:none; border-radius:5px; font-size:16px; font-weight:bold; cursor:pointer;">Login</button>
+            </form>
+            <p style="text-align:center; margin-top:15px; color:#666;">Don't have an account? <a href="#" onclick="switchToSignup()" style="color:#4CAF50; cursor:pointer;">Sign Up</a></p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);">
+        <div style="background-color:#fff; margin:10% auto; padding:30px; border-radius:10px; width:90%; max-width:400px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <span onclick="closeSignupModal()" style="color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>
+            <h2 style="color:#333; margin-bottom:20px;">Sign Up</h2>
+            <form onsubmit="handleSignup(event)">
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; margin-bottom:5px; color:#666;">Full Name:</label>
+                    <input type="text" id="signupName" required style="width:100%; padding:10px; border:1px solid #ddd; border-radius:5px; box-sizing:border-box;">
+                </div>
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; margin-bottom:5px; color:#666;">Email:</label>
+                    <input type="email" id="signupEmail" required style="width:100%; padding:10px; border:1px solid #ddd; border-radius:5px; box-sizing:border-box;">
+                </div>
+                <div style="margin-bottom:20px;">
+                    <label style="display:block; margin-bottom:5px; color:#666;">Password:</label>
+                    <input type="password" id="signupPassword" required style="width:100%; padding:10px; border:1px solid #ddd; border-radius:5px; box-sizing:border-box;">
+                </div>
+                <button type="submit" style="width:100%; padding:12px; background:#4CAF50; color:white; border:none; border-radius:5px; font-size:16px; font-weight:bold; cursor:pointer;">Sign Up</button>
+            </form>
+            <p style="text-align:center; margin-top:15px; color:#666;">Already have an account? <a href="#" onclick="switchToLogin()" style="color:#4CAF50; cursor:pointer;">Login</a></p>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5);">
+        <div style="background-color:#fff; margin:10% auto; padding:30px; border-radius:10px; width:90%; max-width:500px; box-shadow:0 4px 20px rgba(0,0,0,0.3);">
+            <span onclick="closeUploadModal()" style="color:#aaa; float:right; font-size:28px; font-weight:bold; cursor:pointer;">&times;</span>
+            <h2 style="color:#333; margin-bottom:20px;">Upload Content</h2>
+            <form onsubmit="handleUpload(event)" enctype="multipart/form-data">
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; margin-bottom:5px; color:#666;">Title:</label>
+                    <input type="text" id="uploadTitle" required style="width:100%; padding:10px; border:1px solid #ddd; border-radius:5px; box-sizing:border-box;">
+                </div>
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; margin-bottom:5px; color:#666;">Category:</label>
+                    <select id="uploadCategory" required style="width:100%; padding:10px; border:1px solid #ddd; border-radius:5px; box-sizing:border-box;">
+                        <option value="">Select Category</option>
+                        <option value="datascience">Data Science</option>
+                        <option value="cybersecurity">Cybersecurity</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div style="margin-bottom:15px;">
+                    <label style="display:block; margin-bottom:5px; color:#666;">Description:</label>
+                    <textarea id="uploadDescription" rows="4" style="width:100%; padding:10px; border:1px solid #ddd; border-radius:5px; box-sizing:border-box; resize:vertical;"></textarea>
+                </div>
+                <div style="margin-bottom:20px;">
+                    <label style="display:block; margin-bottom:5px; color:#666;">File:</label>
+                    <input type="file" id="uploadFile" required style="width:100%; padding:10px; border:1px solid #ddd; border-radius:5px; box-sizing:border-box;">
+                </div>
+                <button type="submit" style="width:100%; padding:12px; background:#4CAF50; color:white; border:none; border-radius:5px; font-size:16px; font-weight:bold; cursor:pointer;">Upload</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Login Modal Functions
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            alert('Login attempt for: ' + email);
+            closeLoginModal();
+            // Add actual login logic here
+        }
+
+        // Signup Modal Functions
+        function openSignupModal() {
+            document.getElementById('signupModal').style.display = 'block';
+        }
+
+        function closeSignupModal() {
+            document.getElementById('signupModal').style.display = 'none';
+        }
+
+        function handleSignup(event) {
+            event.preventDefault();
+            const name = document.getElementById('signupName').value;
+            const email = document.getElementById('signupEmail').value;
+            alert('Account created for: ' + name);
+            closeSignupModal();
+            // Add actual signup logic here
+        }
+
+        // Upload Modal Functions
+        function openUploadModal() {
+            document.getElementById('uploadModal').style.display = 'block';
+        }
+
+        function closeUploadModal() {
+            document.getElementById('uploadModal').style.display = 'none';
+        }
+
+        function handleUpload(event) {
+            event.preventDefault();
+            const title = document.getElementById('uploadTitle').value;
+            const category = document.getElementById('uploadCategory').value;
+            alert('Content uploaded: ' + title + ' in ' + category);
+            closeUploadModal();
+            // Add actual upload logic here
+        }
+
+        // Switch between login and signup
+        function switchToLogin() {
+            closeSignupModal();
+            openLoginModal();
+        }
+
+        function switchToSignup() {
+            closeLoginModal();
+            openSignupModal();
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            let loginModal = document.getElementById('loginModal');
+            let signupModal = document.getElementById('signupModal');
+            let uploadModal = document.getElementById('uploadModal');
+
+            if (event.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+            if (event.target === signupModal) {
+                signupModal.style.display = 'none';
+            }
+            if (event.target === uploadModal) {
+                uploadModal.style.display = 'none';
+            }
+        }
+
+        // Initialize authentication when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for authManager to be available
+            if (window.authManager) {
+                window.authManager.updateUI();
+                
+                // Add click handlers if not already added
+                const loginBtn = document.querySelector('.btn-login');
+                const signupBtn = document.querySelector('.btn-signup');
+                
+                if (loginBtn && !loginBtn.hasAttribute('data-auth-initialized')) {
+                    loginBtn.setAttribute('data-auth-initialized', 'true');
+                    loginBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (window.authManager.isAuthenticated()) {
+                            window.authManager.showUserMenu();
+                        } else {
+                            window.authManager.showLoginModal();
+                        }
+                    });
+                }
+                
+                if (signupBtn && !signupBtn.hasAttribute('data-auth-initialized')) {
+                    signupBtn.setAttribute('data-auth-initialized', 'true');
+                    signupBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (window.authManager.isAuthenticated()) {
+                            window.authManager.logout();
+                        } else {
+                            window.authManager.showSignupModal();
+                        }
+                    });
+                }
+            }
+        });
+    </script>
 </body>
 </html>

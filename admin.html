@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - TechLearn Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .admin-header {
+            background-color: #4A6FA5;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .admin-header h1 {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .admin-nav {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .admin-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .admin-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .admin-btn.active {
+            background-color: white;
+            color: #4A6FA5;
+        }
+        
+        .admin-content {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 30px;
+        }
+        
+        .admin-sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .admin-main {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .stat-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            text-align: center;
+        }
+        
+        .stat-card i {
+            font-size: 2rem;
+            color: #4A6FA5;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card h3 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: #333;
+        }
+        
+        .stat-card p {
+            margin: 5px 0 0;
+            color: #666;
+        }
+        
+        .content-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .content-table th,
+        .content-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .content-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+        
+        .content-table tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .btn-action {
+            padding: 5px 10px;
+            margin: 0 2px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .btn-edit {
+            background-color: #ffc107;
+            color: #212529;
+        }
+        
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .btn-view {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .upload-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .upload-form {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .upload-form input,
+        .upload-form select,
+        .upload-form textarea {
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .upload-form textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .upload-form button {
+            background-color: #4A6FA5;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .upload-form button:hover {
+            background-color: #3a5a85;
+        }
+        
+        .notification {
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .notification.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .notification.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .user-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .badge-admin {
+            background-color: #4A6FA5;
+            color: white;
+        }
+        
+        .badge-user {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .loading i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index-w3style.html">TechLearn Hub</a>
+                <span class="tagline">Admin Dashboard</span>
+            </div>
+            <nav class="nav">
+                <div class="nav-left">
+                    <a href="index-w3style.html">Home</a>
+                </div>
+                <div class="nav-right">
+                    <button class="btn btn-login">User</button>
+                    <button class="btn btn-logout">Logout</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1><i class="fas fa-shield-alt"></i> Admin Dashboard</h1>
+            <p>Manage content, users, and site settings</p>
+            <div class="admin-nav">
+                <button class="admin-btn active" data-tab="dashboard">Dashboard</button>
+                <button class="admin-btn" data-tab="content">Content Management</button>
+                <button class="admin-btn" data-tab="users">User Management</button>
+                <button class="admin-btn" data-tab="upload">Upload Content</button>
+            </div>
+        </div>
+
+        <div id="notification" class="notification"></div>
+
+        <div class="admin-content">
+            <div class="admin-sidebar">
+                <h3><i class="fas fa-chart-line"></i> Quick Stats</h3>
+                <div class="stat-cards" id="quick-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3 id="total-users">0</h3>
+                        <p>Total Users</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-file-alt"></i>
+                        <h3 id="total-content">0</h3>
+                        <p>Content Items</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-eye"></i>
+                        <h3 id="total-views">0</h3>
+                        <p>Total Views</p>
+                    </div>
+                </div>
+                
+                <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                <div id="recent-activity" class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading activity...</p>
+                </div>
+            </div>
+
+            <div class="admin-main">
+                <!-- Dashboard Tab -->
+                <div id="dashboard-tab" class="tab-content active">
+                    <h2><i class="fas fa-tachometer-alt"></i> Overview</h2>
+                    <div class="stat-cards">
+                        <div class="stat-card">
+                            <i class="fas fa-user-shield"></i>
+                            <h3 id="admin-count">0</h3>
+                            <p>Administrators</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-laptop-code"></i>
+                            <h3 id="ds-content">0</h3>
+                            <p>Data Science</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3 id="cs-content">0</h3>
+                            <p>Cybersecurity</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Recent Users</h3>
+                    <div id="recent-users" class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading users...</p>
+                    </div>
+                </div>
+
+                <!-- Content Management Tab -->
+                <div id="content-tab" class="tab-content">
+                    <h2><i class="fas fa-file-alt"></i> Content Management</h2>
+                    <div class="content-actions">
+                        <input type="text" id="content-search" placeholder="Search content..." style="width: 300px; padding: 8px; margin-bottom: 20px;">
+                    </div>
+                    <div id="content-list" class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading content...</p>
+                    </div>
+                </div>
+
+                <!-- User Management Tab -->
+                <div id="users-tab" class="tab-content">
+                    <h2><i class="fas fa-users-cog"></i> User Management</h2>
+                    <div class="user-actions">
+                        <input type="text" id="user-search" placeholder="Search users..." style="width: 300px; padding: 8px; margin-bottom: 20px;">
+                    </div>
+                    <div id="user-list" class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading users...</p>
+                    </div>
+                </div>
+
+                <!-- Upload Content Tab -->
+                <div id="upload-tab" class="tab-content">
+                    <h2><i class="fas fa-upload"></i> Upload Content</h2>
+                    <div class="upload-section">
+                        <form id="upload-form" class="upload-form">
+                            <div>
+                                <label for="category">Category *</label>
+                                <select id="category" name="category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="datascience">Data Science</option>
+                                    <option value="cybersecurity">Cybersecurity</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label for="title">Title *</label>
+                                <input type="text" id="title" name="title" placeholder="Enter content title" required>
+                            </div>
+                            
+                            <div>
+                                <label for="description">Description *</label>
+                                <textarea id="description" name="description" placeholder="Enter content description" required></textarea>
+                            </div>
+                            
+                            <div>
+                                <label for="file">HTML File *</label>
+                                <input type="file" id="file" name="file" accept=".html" required>
+                                <small>Only HTML files are allowed (max 10MB)</small>
+                            </div>
+                            
+                            <button type="submit">
+                                <i class="fas fa-upload"></i> Upload Content
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <h3>Recent Uploads</h3>
+                    <div id="recent-uploads" class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading recent uploads...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TechLearn Hub</h3>
+                    <p>Learning platform for Cybersecurity and Data Science</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Admin Links</h3>
+                    <a href="index-w3style.html">Back to Site</a>
+                    <a href="#" id="refresh-dashboard">Refresh Dashboard</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TechLearn Hub. Admin Dashboard v1.0</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        class AdminDashboard {
+            constructor() {
+                this.currentTab = 'dashboard';
+                this.init();
+            }
+
+            init() {
+                // Check if user is admin
+                if (!window.authManager || !window.authManager.isAdmin()) {
+                    window.location.href = 'index-w3style.html';
+                    return;
+                }
+
+                this.setupEventListeners();
+                this.loadDashboardData();
+                this.setupTabs();
+            }
+
+            setupEventListeners() {
+                // Tab navigation
+                document.querySelectorAll('.admin-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const tab = btn.dataset.tab;
+                        this.switchTab(tab);
+                    });
+                });
+
+                // Logout button
+                document.querySelector('.btn-logout').addEventListener('click', () => {
+                    window.authManager.logout();
+                    window.location.href = 'index-w3style.html';
+                });
+
+                // Login button (user info)
+                document.querySelector('.btn-login').textContent = window.authManager.currentUser.username;
+                document.querySelector('.btn-login').addEventListener('click', () => {
+                    window.authManager.showUserMenu();
+                });
+
+                // Upload form
+                document.getElementById('upload-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleUpload();
+                });
+
+                // Refresh button
+                document.getElementById('refresh-dashboard').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.loadDashboardData();
+                });
+            }
+
+            setupTabs() {
+                const tabs = document.querySelectorAll('.tab-content');
+                tabs.forEach(tab => tab.classList.remove('active'));
+                document.getElementById(`${this.currentTab}-tab`).classList.add('active');
+            }
+
+            switchTab(tab) {
+                this.currentTab = tab;
+                
+                // Update active button
+                document.querySelectorAll('.admin-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.tab === tab) {
+                        btn.classList.add('active');
+                    }
+                });
+                
+                // Update active tab
+                this.setupTabs();
+                
+                // Load tab data
+                switch(tab) {
+                    case 'content':
+                        this.loadContentList();
+                        break;
+                    case 'users':
+                        this.loadUserList();
+                        break;
+                    case 'upload':
+                        this.loadRecentUploads();
+                        break;
+                }
+            }
+
+            async loadDashboardData() {
+                try {
+                    const response = await window.authManager.fetchWithAuth('/api/admin/dashboard');
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.updateDashboardStats(data.stats);
+                        this.updateRecentUsers(data.stats.recentUsers);
+                    }
+                } catch (error) {
+                    this.showNotification('Failed to load dashboard data', 'error');
+                }
+            }
+
+            updateDashboardStats(stats) {
+                document.getElementById('total-users').textContent = stats.totalUsers;
+                document.getElementById('total-content').textContent = stats.totalContent;
+                document.getElementById('total-views').textContent = stats.totalViews;
+                document.getElementById('admin-count').textContent = stats.totalAdmins;
+                
+                // Calculate category counts (simplified)
+                document.getElementById('ds-content').textContent = Math.floor(stats.totalContent * 0.6);
+                document.getElementById('cs-content').textContent = Math.floor(stats.totalContent * 0.4);
+            }
+
+            updateRecentUsers(users) {
+                const container = document.getElementById('recent-users');
+                container.innerHTML = '';
+                
+                if (users.length === 0) {
+                    container.innerHTML = '<p>No recent users</p>';
+                    return;
+                }
+                
+                const table = document.createElement('table');
+                table.className = 'content-table';
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Joined</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${users.map(user => `
+                            <tr>
+                                <td>${user.username}</td>
+                                <td>${user.email}</td>
+                                <td>
+                                    <span class="user-badge ${user.role === 'admin' ? 'badge-admin' : 'badge-user'}">
+                                        ${user.role}
+                                    </span>
+                                </td>
+                                <td>${new Date(user.createdAt).toLocaleDateString()}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                `;
+                
+                container.appendChild(table);
+            }
+
+            async loadContentList() {
+                const container = document.getElementById('content-list');
+                container.innerHTML = '<i class="fas fa-spinner fa-spin"></i><p>Loading content...</p>';
+                
+                try {
+                    const response = await window.authManager.fetchWithAuth('/api/content');
+                    const data = await response.json();
+                    
+                    if (data) {
+                        this.displayContentList(data);
+                    }
+                } catch (error) {
+                    container.innerHTML = '<p>Failed to load content</p>';
+                }
+            }
+
+            displayContentList(contentData) {
+                const container = document.getElementById('content-list');
+                let allContent = [];
+                
+                // Flatten content from all categories
+                for (const category in contentData) {
+                    if (Array.isArray(contentData[category])) {
+                        contentData[category].forEach(item => {
+                            item.category = category;
+                            allContent.push(item);
+                        });
+                    }
+                }
+                
+                if (allContent.length === 0) {
+                    container.innerHTML = '<p>No content available</p>';
+                    return;
+                }
+                
+                const table = document.createElement('table');
+                table.className = 'content-table';
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Author</th>
+                            <th>Views</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${allContent.map(item => `
+                            <tr>
+                                <td>${item.title}</td>
+                                <td>
+                                    <span class="user-badge ${item.category === 'datascience' ? 'badge-admin' : 'badge-user'}">
+                                        ${item.category}
+                                    </span>
+                                </td>
+                                <td>${item.authorName || 'Unknown'}</td>
+                                <td>${item.views || 0}</td>
+                                <td>${new Date(item.createdAt).toLocaleDateString()}</td>
+                                <td>
+                                    <button class="btn-action btn-view" onclick="adminDashboard.viewContent(${item.id})">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-action btn-edit" onclick="adminDashboard.editContent(${item.id})">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-action btn-delete" onclick="adminDashboard.deleteContent(${item.id})">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                `;
+                
+                container.innerHTML = '';
+                container.appendChild(table);
+                
+                // Setup search
+                const searchInput = document.getElementById('content-search');
+                searchInput.addEventListener('input', (e) => {
+                    const searchTerm = e.target.value.toLowerCase();
+                    const rows = table.querySelectorAll('tbody tr');
+                    
+                    rows.forEach(row => {
+                        const text = row.textContent.toLowerCase();
+                        row.style.display = text.includes(searchTerm) ? '' : 'none';
+                    });
+                });
+            }
+
+            async loadUserList() {
+                const container = document.getElementById('user-list');
+                container.innerHTML = '<i class="fas fa-spinner fa-spin"></i><p>Loading users...</p>';
+                
+                try {
+                    const response = await window.authManager.fetchWithAuth('/api/admin/users');
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        this.displayUserList(data.users);
+                    }
+                } catch (error) {
+                    container.innerHTML = '<p>Failed to load users</p>';
+                }
+            }
+
+            displayUserList(users) {
+                const container = document.getElementById('user-list');
+                
+                if (users.length === 0) {
+                    container.innerHTML = '<p>No users found</p>';
+                    return;
+                }
+                
+                const table = document.createElement('table');
+                table.className = 'content-table';
+                table.innerHTML = `
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Joined</th>
+                            <th>Last Login</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${users.map(user => `
+                            <tr>
+                                <td>${user.username}</td>
+                                <td>${user.email}</td>
+                                <td>
+                                    <span class="user-badge ${user.role === 'admin' ? 'badge-admin' : 'badge-user'}">
+                                        ${user.role}
+                                    </span>
+                                </td>
+                                <td>${new Date(user.createdAt).toLocaleDateString()}</td>
+                                <td>${user.lastLogin ? new Date(user.lastLogin).toLocaleDateString() : 'Never'}</td>
+                                <td>
+                                    <button class="btn-action btn-edit" onclick="adminDashboard.editUserRole(${user.id})">
+                                        <i class="fas fa-user-cog"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                `;
+                
+                container.innerHTML = '';
+                container.appendChild(table);
+                
+                // Setup search
+                const searchInput = document.getElementById('user-search');
+                searchInput.addEventListener('input', (e) => {
+                    const searchTerm = e.target.value.toLowerCase();
+                    const rows = table.querySelectorAll('tbody tr');
+                    
+                    rows.forEach(row => {
+                        const text = row.textContent.toLowerCase();
+                        row.style.display = text.includes(searchTerm) ? '' : 'none';
+                    });
+                });
+            }
+
+            async loadRecentUploads() {
+                const container = document.getElementById('recent-uploads');
+                container.innerHTML = '<i class="fas fa-spinner fa-spin"></i><p>Loading recent uploads...</p>';
+                
+                try {
+                    const response = await window.authManager.fetchWithAuth('/api/content');
+                    const data = await response.json();
+                    
+                    if (data) {
+                        this.displayRecentUploads(data);
+                    }
+                } catch (error) {
+                    container.innerHTML = '<p>Failed to load recent uploads</p>';
+                }
+            }
+
+            displayRecentUploads(contentData) {
+                const container = document.getElementById('recent-uploads');
+                let allContent = [];
+                
+                // Flatten and sort by date
+                for (const category in contentData) {
+                    if (Array.isArray(contentData[category])) {
+                        contentData[category].forEach(item => {
+                            item.category = category;
+                            allContent.push(item);
+                        });
+                    }
+                }
+                
+                // Sort by creation date (newest first)
+                allContent.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                
+                // Take only recent 5
+                const recentContent = allContent.slice(0, 5);
+                
+                if (recentContent.length === 0) {
+                    container.innerHTML = '<p>No recent uploads</p>';
+                    return;
+                }
+                
+                const list = document.createElement('div');
+                list.innerHTML = recentContent.map(item => `
+                    <div style="padding: 10px; border-bottom: 1px solid #eee;">
+                        <strong>${item.title}</strong>
+                        <div style="font-size: 0.9rem; color: #666;">
+                            ${item.category} • ${new Date(item.createdAt).toLocaleDateString()}
+                        </div>
+                    </div>
+                `).join('');
+                
+                container.innerHTML = '';
+                container.appendChild(list);
+            }
+
+            async handleUpload() {
+                const form = document.getElementById('upload-form');
+                const formData = new FormData(form);
+                
+                const category = formData.get('category');
+                if (!category) {
+                    this.showNotification('Please select a category', 'error');
+                    return;
+                }
+                
+                try {
+                    const response = await window.authManager.fetchWithAuth(`/api/admin/content/${category}/upload`, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (response.ok) {
+                        this.showNotification('Content uploaded successfully!', 'success');
+                        form.reset();
+                        this.loadRecentUploads();
+                        this.loadContentList();
+                    } else {
+                        this.showNotification(data.message || 'Upload failed', 'error');
+                    }
+                } catch (error) {
+                    this.showNotification('Network error', 'error');
+                }
+            }
+
+            viewContent(id) {
+                // Redirect to content view
+                window.open(`/content-view.html?id=${id}`, '_blank');
+            }
+
+            async editContent(id) {
+                const newTitle = prompt('Enter new title:');
+                if (newTitle) {
+                    try {
+                        const response = await window.authManager.fetchWithAuth(`/api/admin/content/${id}`, {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ title: newTitle })
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (response.ok) {
+                            this.showNotification('Content updated successfully', 'success');
+                            this.loadContentList();
+                        } else {
+                            this.showNotification(data.message || 'Update failed', 'error');
+                        }
+                    } catch (error) {
+                        this.showNotification('Network error', 'error');
+                    }
+                }
+            }
+
+            async deleteContent(id) {
+                if (confirm('Are you sure you want to delete this content?')) {
+                    try {
+                        const response = await window.authManager.fetchWithAuth(`/api/admin/content/${id}`, {
+                            method: 'DELETE'
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (response.ok) {
+                            this.showNotification('Content deleted successfully', 'success');
+                            this.loadContentList();
+                        } else {
+                            this.showNotification(data.message || 'Delete failed', 'error');
+                        }
+                    } catch (error) {
+                        this.showNotification('Network error', 'error');
+                    }
+                }
+            }
+
+            async editUserRole(userId) {
+                const newRole = prompt('Enter new role (admin/user):');
+                if (newRole && ['admin', 'user'].includes(newRole.toLowerCase())) {
+                    try {
+                        const response = await window.authManager.fetchWithAuth(`/api/admin/users/${userId}/role`, {
+                            method: 'PUT',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ role: newRole.toLowerCase() })
+                        });
+                        
+                        const data = await response.json();
+                        
+                        if (response.ok) {
+                            this.showNotification('User role updated successfully', 'success');
+                            this.loadUserList();
+                            this.loadDashboardData();
+                        } else {
+                            this.showNotification(data.message || 'Update failed', 'error');
+                        }
+                    } catch (error) {
+                        this.showNotification('Network error', 'error');
+                    }
+                } else if (newRole) {
+                    alert('Invalid role. Must be "admin" or "user"');
+                }
+            }
+
+            showNotification(message, type = 'info') {
+                const notification = document.getElementById('notification');
+                notification.textContent = message;
+                notification.className = `notification ${type}`;
+                notification.style.display = 'block';
+                
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        // Initialize admin dashboard when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            window.adminDashboard = new AdminDashboard();
+        });
+    </script>
+</body>
+</html>

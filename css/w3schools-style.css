@@ -556,23 +556,32 @@ body {
 
 /* Certified Section */
 .w3-certified-section {
-    background-color: var(--w3-yellow);
-    border-radius: 8px;
+    background: linear-gradient(135deg, #eefaf2 0%, #f8f9fa 100%);
+    border: 1px solid #dfe9e1;
+    border-radius: 12px;
     padding: 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.04);
 }
 
 .w3-certified-content h2 {
     font-size: 32px;
     margin-bottom: 12px;
+    color: var(--w3-text);
+}
+
+.w3-certified-content p {
+    margin-bottom: 18px;
+    color: #4d5b67;
 }
 
 .w3-certified-image {
     font-size: 80px;
-    color: #FFD700;
+    color: var(--w3-green);
+    opacity: 0.9;
 }
 
 /* RIGHT SIDEBAR */
@@ -595,14 +604,16 @@ body {
 
 /* Certification Card */
 .w3-cert-card {
-    background-color: var(--w3-pink);
+    background: linear-gradient(180deg, #f8f9fa 0%, #eefaf2 100%);
     text-align: center;
+    border: 1px solid #dfe9e1;
 }
 
 .w3-cert-badge {
-    background-color: var(--w3-yellow);
+    background-color: #eaf7ee;
+    color: var(--w3-green);
     padding: 6px 12px;
-    border-radius: 4px;
+    border-radius: 999px;
     font-size: 11px;
     font-weight: 700;
     margin-bottom: 16px;
@@ -613,11 +624,12 @@ body {
     font-size: 28px;
     margin: 8px 0;
     font-weight: 700;
+    color: var(--w3-text);
 }
 
 .w3-cert-image {
     font-size: 60px;
-    color: #FFD700;
+    color: var(--w3-green);
     margin: 20px 0;
 }
 
@@ -625,12 +637,14 @@ body {
     font-size: 11px;
     font-weight: 600;
     margin-top: 8px;
+    color: #4d5b67;
 }
 
 .w3-cert-card h4 {
     font-size: 16px;
     margin: 20px 0;
     font-weight: 700;
+    color: var(--w3-text);
 }
 
 /* Upgrade Card */
@@ -855,4 +869,53 @@ body {
     .w3-bar {
         flex-wrap: wrap;
     }
+}
+
+
+/* ========== UPLOAD BUTTON ========== */
+.btn-upload {
+    background-color: #FF9800 !important;
+    color: white !important;
+    font-weight: bold !important;
+    padding: 8px 16px !important;
+    border-radius: 4px !important;
+    transition: background-color 0.3s !important;
+    margin-right: 8px;
+}
+
+.btn-upload:hover {
+    background-color: #E68900 !important;
+}
+
+/* ========== LOGIN & SIGNUP BUTTONS ========== */
+.btn-login {
+    background-color: transparent !important;
+    color: var(--w3-white) !important;
+    border: 2px solid var(--w3-white) !important;
+    padding: 6px 12px !important;
+    border-radius: 4px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: all 0.3s !important;
+    margin-right: 8px;
+}
+
+.btn-login:hover {
+    background-color: var(--w3-white) !important;
+    color: var(--w3-dark-gray) !important;
+}
+
+.btn-signup {
+    background-color: var(--w3-white) !important;
+    color: var(--w3-dark-gray) !important;
+    padding: 8px 16px !important;
+    border-radius: 4px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: all 0.3s !important;
+}
+
+.btn-signup:hover {
+    background-color: #F0F0F0 !important;
+    transform: scale(1.05) !important;
 }
