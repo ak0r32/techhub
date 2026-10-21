@@ -4,331 +4,307 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python Programming - TechLearn Hub</title>
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/w3schools-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        .content-header {
-            background: linear-gradient(135deg, var(--accent-data) 0%, #1a6d8c 100%);
-            color: white;
-            padding: 60px 0;
-            margin-bottom: 40px;
+        body {
+            background-color: #f7f8fa;
         }
-        
-        .module-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+
+        .module-main {
+            padding: 24px 0 60px;
         }
-        
-        .breadcrumb {
-            margin-bottom: 20px;
+
+        .module-breadcrumb {
             font-size: 0.9rem;
-            color: rgba(255,255,255,0.8);
+            color: #66737d;
+            margin-bottom: 18px;
         }
-        
-        .breadcrumb a {
-            color: white;
+
+        .module-breadcrumb a {
+            color: var(--w3-green);
             text-decoration: none;
         }
-        
-        .module-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+
+        .module-header {
+            background: linear-gradient(135deg, #eefaf2 0%, #f5f8ff 100%);
+            border: 1px solid #dfe9e1;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
         }
-        
-        .module-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
+
+        .module-header h1 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--w3-text);
         }
-        
-        .module-stats-bar {
+
+        .module-header p {
+            margin: 10px 0 0;
+            font-size: 1.08rem;
+            color: #56636d;
+        }
+
+        .module-meta {
             display: flex;
-            gap: 30px;
-            margin-top: 30px;
-            font-size: 0.9rem;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 18px;
         }
-        
-        .module-content {
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
+
+        .module-meta span {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            color: var(--w3-text);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        
-        .sidebar {
-            background-color: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: var(--shadow);
-            height: fit-content;
+
+        .lesson-page {
+            background: transparent;
         }
-        
-        .sidebar-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--accent-data);
-        }
-        
-        .sidebar-menu {
-            list-style: none;
-        }
-        
-        .sidebar-menu li {
-            margin-bottom: 15px;
-        }
-        
-        .sidebar-menu a {
-            color: var(--dark-color);
-            text-decoration: none;
-            display: block;
-            padding: 10px;
-            border-radius: 5px;
-            transition: var(--transition);
-        }
-        
-        .sidebar-menu a:hover {
-            background-color: #f0f7ff;
-            color: var(--accent-data);
-        }
-        
-        .sidebar-menu a.active {
-            background-color: var(--accent-data);
-            color: white;
-        }
-        
+
         .content-area {
-            background-color: white;
-            border-radius: 10px;
-            padding: 40px;
-            box-shadow: var(--shadow);
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
         }
-        
+
         .lesson-title {
             font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--dark-color);
+            margin-bottom: 18px;
+            color: var(--w3-text);
         }
-        
+
         .lesson-content {
             line-height: 1.8;
+            color: #3b4750;
         }
-        
+
         .lesson-content h3 {
-            margin: 25px 0 15px;
-            color: var(--accent-data);
+            color: var(--w3-text);
+            margin: 26px 0 12px;
+            font-size: 1.45rem;
         }
-        
+
+        .lesson-content ul,
+        .lesson-content ol {
+            padding-left: 22px;
+            margin: 14px 0 18px;
+        }
+
         .code-block {
-            background-color: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 5px;
-            padding: 20px;
+            background: #f6f7f8;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 18px 20px;
             margin: 20px 0;
-            font-family: 'Courier New', monospace;
             overflow-x: auto;
         }
-        
+
+        .code-block pre {
+            margin: 0;
+            white-space: pre-wrap;
+            font-family: "Consolas", "Courier New", monospace;
+            color: #1f2937;
+            font-size: 0.94rem;
+        }
+
         .exercise {
-            background-color: #f8fdff;
-            border-left: 4px solid var(--accent-data);
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 0 5px 5px 0;
+            background: #f4faf6;
+            border-left: 4px solid var(--w3-green);
+            border-radius: 8px;
+            padding: 18px 20px;
+            margin: 24px 0;
         }
-        
+
         .exercise-title {
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--accent-data);
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #0b5f3d;
         }
-        
+
         .navigation-buttons {
             display: flex;
             justify-content: space-between;
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid #e9ecef;
+            align-items: center;
+            gap: 14px;
+            margin-top: 34px;
+            padding-top: 24px;
+            border-top: 1px solid #edf0f2;
         }
-        
-        .btn-prev, .btn-next {
+
+        .w3-right-card.small {
+            padding: 18px 20px;
+        }
+
+        .w3-right-card h4 {
+            margin-bottom: 14px;
+        }
+
+        .course-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .course-list li {
+            margin: 8px 0;
+        }
+
+        .course-list a {
+            color: var(--w3-text);
+            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            padding: 8px 0;
         }
-        
-        .btn-prev {
-            color: var(--gray-color);
+
+        .course-list a:hover {
+            color: var(--w3-green);
         }
-        
-        .btn-next {
-            background-color: var(--accent-data);
-            color: white;
+
+        @media (max-width: 768px) {
+            .content-area {
+                padding: 22px 18px;
+            }
+
+            .navigation-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Reuse the same header from index.html -->
-    <header class="main-header">
-        <div class="container">
-            <div class="logo-section">
-                <h1 class="logo"><i class="fas fa-graduation-cap"></i> TechLearn Hub</h1>
-                <p class="tagline">Master Cybersecurity & Data Science</p>
-            </div>
-            
-            <nav class="main-nav">
-                <div class="nav-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="../../index.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li class="nav-dropdown">
-                        <a href="#"><i class="fas fa-database"></i> Data Science <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-content data-science-dropdown">
-                            <div class="dropdown-grid">
-                                <div class="dropdown-section">
-                                    <h4>Python & Fundamentals</h4>
-                                    <a href="python.html" class="active">Python Programming</a>
-                                    <a href="sql.html">SQL & Databases</a>
-                                    <a href="fastapi.html">Fast API</a>
-                                    <a href="math.html">Mathematics for DS</a>
-                                </div>
-                                <div class="dropdown-section">
-                                    <h4>Machine Learning</h4>
-                                    <a href="ml.html">ML Fundamentals</a>
-                                    <a href="scikit.html">Scikit-Learn</a>
-                                    <a href="automl.html">AutoML</a>
-                                    <a href="mlops.html">MLOps</a>
-                                </div>
-                                <div class="dropdown-section">
-                                    <h4>Deep Learning</h4>
-                                    <a href="dl.html">Deep Learning</a>
-                                    <a href="pytorch.html">PyTorch</a>
-                                    <a href="tensorflow.html">TensorFlow</a>
-                                    <a href="cnn.html">Computer Vision</a>
-                                </div>
-                                <div class="dropdown-section">
-                                    <h4>Advanced Topics</h4>
-                                    <a href="nlp.html">NLP</a>
-                                    <a href="transformers.html">Transformers</a>
-                                    <a href="rl.html">Reinforcement Learning</a>
-                                    <a href="langchain.html">LangChain</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="nav-dropdown">
-                        <a href="#"><i class="fas fa-shield-alt"></i> Cybersecurity <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-content cybersecurity-dropdown">
-                            <div class="dropdown-grid">
-                                <div class="dropdown-section">
-                                    <h4>Fundamentals</h4>
-                                    <a href="../cybersecurity/fundamentals.html">Cyber Fundamentals</a>
-                                    <a href="../cybersecurity/network.html">Network Security</a>
-                                    <a href="../cybersecurity/cryptography.html">Cryptography</a>
-                                    <a href="../cybersecurity/ethics.html">Ethical Hacking</a>
-                                </div>
-                                <div class="dropdown-section">
-                                    <h4>Defensive Security</h4>
-                                    <a href="../cybersecurity/soc.html">SOC Operations</a>
-                                    <a href="../cybersecurity/incident.html">Incident Response</a>
-                                    <a href="../cybersecurity/forensics.html">Digital Forensics</a>
-                                    <a href="../cybersecurity/siem.html">SIEM Tools</a>
-                                </div>
-                                <div class="dropdown-section">
-                                    <h4>Offensive Security</h4>
-                                    <a href="../cybersecurity/pentest.html">Penetration Testing</a>
-                                    <a href="../cybersecurity/webapp.html">Web App Security</a>
-                                    <a href="../cybersecurity/mobile.html">Mobile Security</a>
-                                    <a href="../cybersecurity/cloud.html">Cloud Security</a>
-                                </div>
-                                <div class="dropdown-section">
-                                    <h4>Advanced Topics</h4>
-                                    <a href="../cybersecurity/malware.html">Malware Analysis</a>
-                                    <a href="../cybersecurity/threat.html">Threat Intelligence</a>
-                                    <a href="../cybersecurity/iot.html">IoT Security</a>
-                                    <a href="../cybersecurity/compliance.html">Compliance</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li><a href="#"><i class="fas fa-book"></i> Tutorials</a></li>
-                    <li><a href="#"><i class="fas fa-code"></i> Exercises</a></li>
-                    <li><a href="#"><i class="fas fa-certificate"></i> Certifications</a></li>
-                    <li><a href="#"><i class="fas fa-question-circle"></i> FAQ</a></li>
-                </ul>
-            </nav>
-            
-            <div class="user-actions">
-                <button class="btn btn-login"><i class="fas fa-sign-in-alt"></i> Login</button>
-                <button class="btn btn-signup"><i class="fas fa-user-plus"></i> Sign Up</button>
-            </div>
-        </div>
-    </header>
+    <div class="w3-top-nav">
+        <div class="w3-bar">
+            <a href="../../index-w3style.html" class="w3-bar-item w3-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span class="logo-text">TechLearn</span>
+            </a>
 
-    <!-- Content Header -->
-    <div class="content-header">
-        <div class="module-container">
-            <div class="breadcrumb">
-                <a href="../../index.html">Home</a> > 
-                <a href="#">Data Science</a> > 
-                <span>Python Programming</span>
+            <div class="w3-bar-item w3-dropdown-click">
+                <button class="w3-button">Tutorials <i class="fas fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block">
+                    <a href="#" class="w3-bar-item"><i class="fas fa-database"></i> Data Science Tutorials</a>
+                    <a href="#" class="w3-bar-item"><i class="fas fa-shield-alt"></i> Cybersecurity Tutorials</a>
+                    <a href="../../tutorials.html" class="w3-bar-item"><i class="fas fa-book"></i> All Tutorials</a>
+                </div>
             </div>
-            
-            <h1 class="module-title">Python Programming</h1>
-            <p class="module-subtitle">Learn Python from basics to advanced for Data Science applications</p>
-            
-            <div class="module-stats-bar">
-                <div><i class="fas fa-book"></i> 50 Lessons</div>
-                <div><i class="fas fa-code"></i> 100+ Exercises</div>
-                <div><i class="fas fa-clock"></i> Estimated: 40 hours</div>
-                <div><i class="fas fa-star"></i> Difficulty: Beginner to Intermediate</div>
+
+            <div class="w3-bar-item w3-dropdown-click">
+                <button class="w3-button">References <i class="fas fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block">
+                    <a href="#" class="w3-bar-item"><i class="fab fa-python"></i> Python Reference</a>
+                    <a href="#" class="w3-bar-item"><i class="fas fa-database"></i> SQL Reference</a>
+                    <a href="#" class="w3-bar-item"><i class="fas fa-network-wired"></i> Network Reference</a>
+                </div>
             </div>
+
+            <div class="w3-bar-item w3-dropdown-click">
+                <button class="w3-button">Exercises <i class="fas fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block">
+                    <a href="../../exercises.html" class="w3-bar-item"><i class="fas fa-code"></i> All Exercises</a>
+                    <a href="#" class="w3-bar-item"><i class="fas fa-brain"></i> Quizzes</a>
+                    <a href="#" class="w3-bar-item"><i class="fas fa-trophy"></i> Challenges</a>
+                </div>
+            </div>
+
+            <div class="w3-bar-item w3-dropdown-click">
+                <button class="w3-button">Certificates <i class="fas fa-caret-down"></i></button>
+                <div class="w3-dropdown-content w3-bar-block">
+                    <a href="../../certifications.html" class="w3-bar-item"><i class="fas fa-certificate"></i> Certifications</a>
+                    <a href="#" class="w3-bar-item"><i class="fas fa-award"></i> My Certificates</a>
+                </div>
+            </div>
+
+            <div class="w3-bar-item w3-search">
+                <input type="text" placeholder="Search..." class="w3-input-search">
+                <button class="w3-button-search"><i class="fas fa-search"></i></button>
+            </div>
+
+            <button class="w3-bar-item w3-button w3-hide-large w3-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="module-container">
-        <div class="module-content">
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <h3 class="sidebar-title">Course Outline</h3>
-                <ul class="sidebar-menu">
-                    <li><a href="#intro" class="active">Introduction to Python</a></li>
-                    <li><a href="#variables">Variables & Data Types</a></li>
-                    <li><a href="#control">Control Structures</a></li>
-                    <li><a href="#functions">Functions</a></li>
-                    <li><a href="#data-structures">Data Structures</a></li>
-                    <li><a href="#oop">Object-Oriented Programming</a></li>
-                    <li><a href="#modules">Modules & Packages</a></li>
-                    <li><a href="#file-io">File I/O Operations</a></li>
-                    <li><a href="#error">Error Handling</a></li>
-                    <li><a href="#ds-libs">Data Science Libraries</a></li>
-                </ul>
-                
-                <div style="margin-top: 30px;">
-                    <h3 class="sidebar-title">Resources</h3>
-                    <a href="#" class="btn" style="width: 100%; margin-bottom: 10px;">
-                        <i class="fas fa-download"></i> Download Exercises
-                    </a>
-                    <a href="#" class="btn" style="width: 100%; margin-bottom: 10px;">
-                        <i class="fas fa-video"></i> Video Tutorials
-                    </a>
-                    <a href="#" class="btn" style="width: 100%;">
-                        <i class="fas fa-question-circle"></i> Ask Questions
-                    </a>
+    <div class="w3-tech-nav">
+        <div class="w3-tech-bar">
+            <a href="python.html" class="w3-tech-item"><i class="fab fa-python"></i> PYTHON</a>
+            <a href="ml.html" class="w3-tech-item"><i class="fas fa-brain"></i> MACHINE LEARNING</a>
+            <a href="dl.html" class="w3-tech-item"><i class="fas fa-layer-group"></i> DEEP LEARNING</a>
+            <a href="nlp.html" class="w3-tech-item"><i class="fas fa-language"></i> NLP</a>
+            <a href="sql.html" class="w3-tech-item"><i class="fas fa-database"></i> SQL</a>
+            <a href="fastapi.html" class="w3-tech-item"><i class="fas fa-bolt"></i> FASTAPI</a>
+            <a href="../cybersecurity/fundamentals.html" class="w3-tech-item"><i class="fas fa-shield-alt"></i> CYBERSECURITY</a>
+            <a href="../cybersecurity/network.html" class="w3-tech-item"><i class="fas fa-network-wired"></i> NETWORK SECURITY</a>
+            <a href="../cybersecurity/ethics.html" class="w3-tech-item"><i class="fas fa-user-secret"></i> ETHICAL HACKING</a>
+            <a href="pytorch.html" class="w3-tech-item"><i class="fas fa-fire"></i> PYTORCH</a>
+            <a href="tensorflow.html" class="w3-tech-item"><i class="fas fa-brain"></i> TENSORFLOW</a>
+            <a href="../cybersecurity/cryptography.html" class="w3-tech-item"><i class="fas fa-lock"></i> CRYPTOGRAPHY</a>
+            <a href="#" class="w3-tech-item"><i class="fas fa-ellipsis-h"></i> MORE</a>
+        </div>
+        <button class="w3-tech-scroll-left"><i class="fas fa-chevron-left"></i></button>
+        <button class="w3-tech-scroll-right"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <div class="w3-main-container module-main">
+        <div class="w3-sidebar-left">
+            <div class="w3-sidebar-content">
+                <h3 class="w3-sidebar-title">Python</h3>
+                <div class="w3-sidebar-section">
+                    <a href="#intro" class="w3-sidebar-link active"><i class="fas fa-home"></i> Introduction</a>
+                    <a href="#variables" class="w3-sidebar-link"><i class="fas fa-code"></i> Variables</a>
+                    <a href="#control" class="w3-sidebar-link"><i class="fas fa-cogs"></i> Control Flow</a>
+                    <a href="#functions" class="w3-sidebar-link"><i class="fas fa-function"></i> Functions</a>
+                    <a href="#data-structures" class="w3-sidebar-link"><i class="fas fa-list-ul"></i> Data Structures</a>
+                    <a href="#oop" class="w3-sidebar-link"><i class="fas fa-object-group"></i> OOP</a>
+                    <a href="#modules" class="w3-sidebar-link"><i class="fas fa-box"></i> Modules</a>
+                    <a href="#file-io" class="w3-sidebar-link"><i class="fas fa-file-code"></i> File I/O</a>
+                    <a href="#error" class="w3-sidebar-link"><i class="fas fa-bug"></i> Error Handling</a>
+                </div>
+
+                <h3 class="w3-sidebar-title">Resources</h3>
+                <div class="w3-sidebar-section">
+                    <a href="../../tutorials.html" class="w3-sidebar-link"><i class="fas fa-book"></i> Tutorials</a>
+                    <a href="../../exercises.html" class="w3-sidebar-link"><i class="fas fa-code"></i> Exercises</a>
+                    <a href="../../certifications.html" class="w3-sidebar-link"><i class="fas fa-certificate"></i> Certificates</a>
+                    <a href="../../faq.html" class="w3-sidebar-link"><i class="fas fa-question-circle"></i> FAQ</a>
                 </div>
             </div>
-            
-            <!-- Content Area -->
+        </div>
+
+        <div class="w3-main-content lesson-page">
+            <div class="module-header">
+                <div class="module-breadcrumb">
+                    <a href="../../index-w3style.html">Home</a> / <a href="../../tutorials.html">Data Science</a> / <span>Python Programming</span>
+                </div>
+                <h1>Python Programming</h1>
+                <p>Learn Python from basics to advanced for Data Science applications.</p>
+                <div class="module-meta">
+                    <span><i class="fas fa-book"></i> 50 Lessons</span>
+                    <span><i class="fas fa-code"></i> 100+ Exercises</span>
+                    <span><i class="fas fa-clock"></i> 40 hours</span>
+                    <span><i class="fas fa-star"></i> Beginner to Intermediate</span>
+                </div>
+            </div>
+
             <div class="content-area">
                 <h2 class="lesson-title" id="intro">Introduction to Python</h2>
-                
                 <div class="lesson-content">
                     <p>Python is a high-level, interpreted programming language known for its simplicity and readability. It's widely used in Data Science, Machine Learning, Web Development, and Automation.</p>
-                    
+
                     <h3>Why Python for Data Science?</h3>
                     <p>Python has become the language of choice for data scientists due to:</p>
                     <ul>
@@ -338,23 +314,22 @@
                         <li>Excellent visualization libraries (Matplotlib, Seaborn, Plotly)</li>
                         <li>Integration with big data tools</li>
                     </ul>
-                    
+
                     <div class="code-block">
-                        <h4>Your First Python Program</h4>
                         <pre><code># Simple Python program
 print("Hello, TechLearn Hub!")
 
 # Basic arithmetic
 x = 10
 y = 20
-sum = x + y
-print(f"The sum of {x} and {y} is {sum}")
+sum_value = x + y
+print(f"The sum of {x} and {y} is {sum_value}")
 
 # Python is dynamically typed
 message = "Learning Python for Data Science"
 print(message)</code></pre>
                     </div>
-                    
+
                     <h3>Python Installation</h3>
                     <p>To get started with Python:</p>
                     <ol>
@@ -363,27 +338,25 @@ print(message)</code></pre>
                         <li>Verify installation: <code>python --version</code></li>
                         <li>Install an IDE (VS Code, PyCharm) or use Jupyter Notebook</li>
                     </ol>
-                    
+
                     <div class="exercise">
                         <div class="exercise-title">Exercise 1.1: Python Setup</div>
                         <p>Install Python on your system and run a simple "Hello World" program. Verify that you can execute Python code from your terminal or IDE.</p>
                         <p><strong>Challenge:</strong> Create a program that prints your name and a fun fact about Data Science.</p>
                     </div>
-                    
+
                     <h3>Python Interactive Shell</h3>
                     <p>Python comes with an interactive shell that's great for testing small code snippets:</p>
-                    
+
                     <div class="code-block">
                         <pre><code>$ python
 Python 3.9.0 (default, Oct  6 2021, 00:00:00)
 >>> print("Welcome to Python!")
 Welcome to Python!
 >>> 5 + 7
-12
->>> import this
-# The Zen of Python appears</code></pre>
+12</code></pre>
                     </div>
-                    
+
                     <h3>Key Python Features</h3>
                     <p>Some of Python's most important features for Data Science:</p>
                     <ul>
@@ -393,7 +366,7 @@ Welcome to Python!
                         <li><strong>Extensive Standard Library:</strong> Built-in modules for various tasks</li>
                         <li><strong>Cross-platform:</strong> Runs on Windows, macOS, Linux</li>
                     </ul>
-                    
+
                     <div class="exercise">
                         <div class="exercise-title">Exercise 1.2: Interactive Shell Practice</div>
                         <p>Open Python interactive shell and practice the following:</p>
@@ -405,93 +378,87 @@ Welcome to Python!
                         </ol>
                     </div>
                 </div>
-                
+
                 <div class="navigation-buttons">
-                    <a href="#" class="btn btn-prev">
-                        <i class="fas fa-arrow-left"></i> Previous Lesson
-                    </a>
-                    <a href="#variables" class="btn btn-next">
-                        Next Lesson: Variables & Data Types <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <a href="#" class="w3-btn w3-btn-secondary"><i class="fas fa-arrow-left"></i> Previous Lesson</a>
+                    <a href="#variables" class="w3-btn w3-btn-primary">Next Lesson: Variables & Data Types <i class="fas fa-arrow-right"></i></a>
                 </div>
+            </div>
+        </div>
+
+        <div class="w3-sidebar-right">
+            <div class="w3-right-card small">
+                <h4>Course outline</h4>
+                <ul class="course-list">
+                    <li><a href="#intro"><i class="fas fa-check"></i> Introduction</a></li>
+                    <li><a href="#variables"><i class="fas fa-check"></i> Variables</a></li>
+                    <li><a href="#control"><i class="fas fa-check"></i> Control Flow</a></li>
+                    <li><a href="#functions"><i class="fas fa-check"></i> Functions</a></li>
+                    <li><a href="#data-structures"><i class="fas fa-check"></i> Data Structures</a></li>
+                </ul>
+            </div>
+
+            <div class="w3-right-card small">
+                <h4>Quick links</h4>
+                <ul class="course-list">
+                    <li><a href="../../tutorials.html"><i class="fas fa-book"></i> Tutorials</a></li>
+                    <li><a href="../../exercises.html"><i class="fas fa-code"></i> Exercises</a></li>
+                    <li><a href="../../certifications.html"><i class="fas fa-certificate"></i> Certifications</a></li>
+                    <li><a href="../../faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <!-- Footer (reused from index.html) -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>TechLearn Hub</h4>
-                    <p>Providing structured learning paths for cybersecurity and data science students since 2024.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
+    <footer class="w3-footer">
+        <div class="w3-footer-content">
+            <div class="w3-footer-grid">
+                <div class="w3-footer-col">
+                    <h4>Top Tutorials</h4>
+                    <a href="#">Python Tutorial</a>
+                    <a href="#">ML Tutorial</a>
+                    <a href="#">SQL Tutorial</a>
+                    <a href="#">Cyber Tutorial</a>
                 </div>
-                <div class="footer-col">
-                    <h4>Data Science</h4>
-                    <ul>
-                        <li><a href="python.html">Python Programming</a></li>
-                        <li><a href="ml.html">Machine Learning</a></li>
-                        <li><a href="dl.html">Deep Learning</a></li>
-                        <li><a href="nlp.html">NLP & Transformers</a></li>
-                        <li><a href="sql.html">SQL & Databases</a></li>
-                    </ul>
+                <div class="w3-footer-col">
+                    <h4>Top References</h4>
+                    <a href="#">Python Reference</a>
+                    <a href="#">SQL Reference</a>
+                    <a href="#">Network Reference</a>
                 </div>
-                <div class="footer-col">
-                    <h4>Cybersecurity</h4>
-                    <ul>
-                        <li><a href="../cybersecurity/fundamentals.html">Network Security</a></li>
-                        <li><a href="../cybersecurity/ethics.html">Ethical Hacking</a></li>
-                        <li><a href="../cybersecurity/cryptography.html">Cryptography</a></li>
-                        <li><a href="../cybersecurity/incident.html">Incident Response</a></li>
-                        <li><a href="../cybersecurity/forensics.html">Forensics</a></li>
-                    </ul>
+                <div class="w3-footer-col">
+                    <h4>Top Examples</h4>
+                    <a href="#">Python Examples</a>
+                    <a href="#">ML Examples</a>
+                    <a href="#">Security Examples</a>
                 </div>
-                <div class="footer-col">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="#">Tutorials</a></li>
-                        <li><a href="#">Exercises</a></li>
-                        <li><a href="#">Certifications</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Community</a></li>
-                    </ul>
+                <div class="w3-footer-col">
+                    <h4>Certificates</h4>
+                    <a href="../../certifications.html">Python Certification</a>
+                    <a href="../../certifications.html">ML Certification</a>
+                    <a href="../../certifications.html">Security Certification</a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 TechLearn Hub. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-                <p>Inspired by W3Schools learning structure</p>
+            <div class="w3-footer-bottom">
+                <p>&copy; 2024 TechLearn Hub. All Rights Reserved.</p>
+                <div class="w3-footer-links">
+                    <a href="#">About</a>
+                    <a href="../../faq.html">FAQ</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Contact</a>
+                </div>
+                <p style="font-size: 0.85rem; color: #999; margin-top: 10px;">Design inspired by W3Schools.com</p>
             </div>
         </div>
     </footer>
 
-    <script src="../../js/script.js"></script>
+    <script src="../../js/w3schools-script.js"></script>
     <script>
-        // Smooth scroll for sidebar links
-        document.querySelectorAll('.sidebar-menu a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId.startsWith('#')) {
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 100,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Update active class
-                        document.querySelectorAll('.sidebar-menu a').forEach(a => {
-                            a.classList.remove('active');
-                        });
-                        this.classList.add('active');
-                    }
-                }
+        document.querySelectorAll('.w3-sidebar-link').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.w3-sidebar-link').forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
             });
         });
     </script>
